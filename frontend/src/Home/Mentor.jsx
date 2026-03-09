@@ -27,7 +27,7 @@ const teachers = [
     rating: 4.7,
   },
   {
-    image: "https://plus.unsplash.com/premium_photo-1661942126259-fb08e7cce1e2?w=600&auto=format&fit=crop&q=60",
+    image: "https://images.unsplash.com/photo-1630758888838-d0c243fa2715?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGdpcmwlMjBmYWNlfGVufDB8fDB8fHww",
     name: "Ananya Sharma",
     qualification: "M.Sc Physics (IIT-JEE)",
     experience: "6+ Years",
