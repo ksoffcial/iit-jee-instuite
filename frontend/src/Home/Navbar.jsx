@@ -27,7 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 const navLinks = [
   { name: 'Courses', href: '#courser', icon: BookOpen,route:"/course" },
   { name: 'Mock Tests', href: '#tests', icon: Zap,route:"/course" },
-  { name: 'Results', href: '#results', icon: Trophy,route:"/course" },
+  { name: 'Results', href: '#results', icon: Trophy,route:"/result" },
   { name: 'JEE/NEET', href: '#material', icon: Atom,route:"/course" },
 ];
 

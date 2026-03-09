@@ -3,7 +3,7 @@ import { GraduationCap, Clock, Star, ChevronRight, BookOpen, Award } from 'lucid
 
 const teachers = [
   {
-    image: "https://instagram.fpat2-2.fna.fbcdn.net/v/t51.82787-19/618808476_17844699372673522_5859969453871275360_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpat2-2.fna.fbcdn.net&_nc_cat=110&_nc_oc=Q6cZ2QHtus5yr_eE3xqs5Rp7W145mjRy2vWMEgs3_sPBMIv-G4Y7wJRrs37FquCy4KfvcEBVr70scGWmjk_1Num-2wSa&_nc_ohc=QjCVbkV1q3oQ7kNvwH4pyoe&_nc_gid=QxA1xSUvCyEGKo09hFGivg&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfzqT4p3aTZeltOBGXzTMUHfcEMTOiAeqZHqXKvxbAmvPw&oe=69B38781&_nc_sid=7a9f4b",
+    image: "https://res.cloudinary.com/dkt7ksipv/image/upload/v1773074974/rakeshsir-removebg-preview_hadd7h.png",
     name: "Rakesh Kr.",
     qualification: "B.Tech (Mechanical)",
     experience: "12+ Years",
@@ -11,7 +11,7 @@ const teachers = [
     rating: 4.9,
   },
   {
-    image: "https://instagram.fpat2-1.fna.fbcdn.net/v/t51.2885-19/400352956_700163795102330_6498123933615412318_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpat2-1.fna.fbcdn.net&_nc_cat=102&_nc_oc=Q6cZ2QHffsMDlZwJQ5T5xf2KuhBQ2XXzY2Q8cO7-jYsEZgEF_7_lyQJEVHVuJZ8NnGID23ZRoPRwo672kfNKhsRKkgip&_nc_ohc=lySSz79ma8EQ7kNvwGcqDET&_nc_gid=nwYGxancaTNyVTEwfmRdhA&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_AfwWvfWsANgUXKBr13DqLAXo5lE0a6bAE4OUagNoRJaOJg&oe=69B35B09&_nc_sid=7d3ac5",
+    image:"https://res.cloudinary.com/dkt7ksipv/image/upload/v1773075042/ckrajsir_xndhzz.jpg",
     name: "CK Raj",
     qualification: "PhD (Botany)",
     experience: "12+ Years",
@@ -19,7 +19,7 @@ const teachers = [
     rating: 4.8,
   },
   {
-    image: "https://instagram.fpat2-8.fna.fbcdn.net/v/t51.2885-19/453587917_2244514722566979_5194082974226218100_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpat2-8.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QHSLeo_dMxRSE8VIP3L-WBK-bUx-FuLn1MUP-G8GwxnzqUltoQ0LwFHQF9K8EbsQThMGfU31fPZgcAzlqyvz39P&_nc_ohc=AgLtQgFWWFsQ7kNvwFX9KWZ&_nc_gid=8hEGN6valTCW4kc96t5pFw&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Afxt0P_SD5u8LlJ37qklJXakJsNdlpiLuHLAvFXypVYFTw&oe=69B360F7&_nc_sid=7a9f4b",
+    image: "https://res.cloudinary.com/dkt7ksipv/image/upload/v1773075069/prince_bhaiya-removebg-preview_eqjzjh.png",
     name: "Prince Kr.",
     qualification: "B.Tech (Software)",
     experience: "5+ Years",
