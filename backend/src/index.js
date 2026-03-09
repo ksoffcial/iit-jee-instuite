@@ -10,7 +10,8 @@ const cors = require('cors')
 
 app.use(cors(
     {
-        origin: ['http://localhost:5173', 'https://iit-jee-instuite.vercel.app/'],
+        origin: ['http://localhost:5173', 
+            'https://iit-jee-instuite.vercel.app'],
         credentials: true
     }
 ))
