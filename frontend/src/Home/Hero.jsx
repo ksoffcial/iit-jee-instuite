@@ -14,6 +14,7 @@ import {
   Atom,
   Brain,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const stats = [
   { icon: Trophy, label: "IIT Selections", value: "2,400+", color: "text-yellow-400" },
@@ -39,6 +40,7 @@ export default function Hero() {
   const [shayariIndex, setShayariIndex] = useState(0);
   const [visible, setVisible] = useState(true);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const interval = setInterval(() => {
       setVisible(false);
@@ -152,7 +154,7 @@ export default function Hero() {
                 Start Free Trial
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-sm hover:bg-white/5">
+              <button onClick={()=>navigate('/result')} className="flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-sm hover:bg-white/5">
                 View Results
                 <ChevronRight size={16} />
               </button>

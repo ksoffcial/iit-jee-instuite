@@ -6,6 +6,7 @@ import Mentor from '../Home/Mentor'
 import Feedback from '../Home/Feedback'
 import WhyChooseUs from '../Home/WhyChooseUs'
 import StudentResults from '../Home/StudentResults'
+import Footer from '../Home/Footer'
 
 const Home = () => {
   return (
@@ -17,6 +18,8 @@ const Home = () => {
         <Mentor/>
         <StudentResults/>
         <Feedback/>
+        <Footer/>
+        
     </div>
   )
 }
