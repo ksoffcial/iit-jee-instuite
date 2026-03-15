@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { checkUser } from './authSlice'
 import Courses from './Home/Courses'
 import StudentResults from './Home/StudentResults'
+import AdminPanel from './Pages/AdminPanel'
+
 
 
 
@@ -37,7 +39,8 @@ const App = () => {
         <Route path='/login' element={isAuthenticated ? <Navigate to="/" /> : <Login />} />
         <Route path='/register' element={isAuthenticated ? <Navigate to="/" /> : <Register />} />
         <Route path='/course' element={<Courses />} />
-        <Route path='/result' element={<StudentResults/>}/>
+        <Route path='/result' element={<StudentResults />} />
+        <Route path='/admin' element={isAuthenticated && user.role == "admin" ? <AdminPanel /> : <Navigate to="/" />} />
       </Routes>
     </div>
   )
