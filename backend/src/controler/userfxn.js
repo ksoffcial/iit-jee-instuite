@@ -1,7 +1,7 @@
 const User = require("../models/userData");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const validateData = require("../utils/validate");
+const { validateData } = require("../utils/validate");
 
 
 
@@ -19,7 +19,7 @@ const registerUser = async (req, res) => {
             fullName: newUser.fullName,
             emailId: newUser.emailId,
             _id: newUser._id,
-            role:newUser.role
+            role: newUser.role
         }
 
         const token = jwt.sign({ _id: newUser._id, emailId: newUser.emailId, role: newUser.role }, process.env.PRIVATE_KEY, { expiresIn: 3600 })
@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
             fullName: user.fullName,
             emailId: user.emailId,
             _id: user._id,
-            role:user.role
+            role: user.role
         }
 
         res.status(200).json(
@@ -95,4 +95,4 @@ const logOut = (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser,logOut }
+module.exports = { registerUser, loginUser, logOut }

@@ -5,12 +5,14 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const main = require("./dbConnector/db");
 const redisClient = require("./dbConnector/redis");
-const cors = require('cors')
+const cors = require('cors');
+const adminRouter = require("./routes/adminRoute");
+const batchRouter = require("./routes/batchroute");
 
 
 app.use(cors(
     {
-        origin: ['http://localhost:5173', 
+        origin: ['http://localhost:5173',
             'https://iit-jee-instuite.vercel.app'],
         credentials: true
     }
@@ -26,6 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use("/user", authRouter);
+app.use("/admin", adminRouter);
+app.use("/batch", batchRouter);
 
 
 

@@ -26,5 +26,21 @@ const validateData = (data) => {
     }
 }
 
+const batchValidator = (data) => {
 
-module.exports = validateData;
+    if (!data) {
+        throw new Error("Data not avaible ");
+    }
+
+    const maditoryField = ["BatchName", "className", "time", "subjects", "description", "timePeriods"];
+
+    const isAllowed = maditoryField.every((k) => Object.keys(data).includes(k))
+
+    if (!isAllowed) {
+        throw new Error("All filed are required to fill");
+    }
+
+}
+
+
+module.exports = {validateData, batchValidator};
