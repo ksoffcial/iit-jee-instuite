@@ -14,6 +14,10 @@ const batchSchema = new Schema({
         type: String,
         enum: ["12th", "11th", "dropper", "jee", "neet"]
     },
+    startDate: {
+        type: String,
+        required: true,
+    },
     time: [
         {
             subject: {
@@ -45,13 +49,13 @@ const batchSchema = new Schema({
         minLenght: 100,
         maxLength: 200,
     },
-    timePeriods:{
-        type:String,
-        required:true
+    timePeriods: {
+        type: String,
+        required: true
     }
 
 }, { timestamps: true })
 
-const Batch = mongoose.model("batch",batchSchema);
+const Batch = mongoose.model("batch", batchSchema);
 
-module.exports = Batch ;
+module.exports = Batch;

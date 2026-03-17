@@ -7,6 +7,7 @@ import Feedback from '../Home/Feedback'
 import WhyChooseUs from '../Home/WhyChooseUs'
 import StudentResults from '../Home/StudentResults'
 import Footer from '../Home/Footer'
+import BatchUi from '../Home/BatchUi'
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         <Navbar/>
         <Hero/>
         <Courses/>
+        <BatchUi/>
         <WhyChooseUs/>
         <Mentor/>
         <StudentResults/>

@@ -8,6 +8,11 @@ import { checkUser } from './authSlice'
 import Courses from './Home/Courses'
 import StudentResults from './Home/StudentResults'
 import AdminPanel from './Pages/AdminPanel'
+import AllUser from './Admin/AllUser'
+import BatchDetails from './Admin/BatchDetails'
+import CreateBatch from './Admin/CreateBatch'
+import BatchUi from './Home/BatchUi'
+import Footer from './Home/Footer'
 
 
 
@@ -38,9 +43,12 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={isAuthenticated ? <Navigate to="/" /> : <Login />} />
         <Route path='/register' element={isAuthenticated ? <Navigate to="/" /> : <Register />} />
-        <Route path='/course' element={<Courses />} />
+        <Route path='/course' element={<><Courses /> <BatchUi/> <Footer/></>} />
         <Route path='/result' element={<StudentResults />} />
         <Route path='/admin' element={isAuthenticated && user.role == "admin" ? <AdminPanel /> : <Navigate to="/" />} />
+        <Route path='/admin/getAllUser' element={isAuthenticated && user.role == 'admin' ? <AllUser /> : <Navigate to="/" />} />
+        <Route path='/admin/batchDetails' element={isAuthenticated && user.role == 'admin' ? <BatchDetails/> : <Navigate to='/'/> }/>
+        <Route path='/admin/createBatch' element={isAuthenticated && user.role == 'admin' ? <CreateBatch/> : <Navigate to='/'/> }/>
       </Routes>
     </div>
   )
