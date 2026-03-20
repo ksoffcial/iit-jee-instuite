@@ -8,6 +8,7 @@ const redisClient = require("./dbConnector/redis");
 const cors = require('cors');
 const adminRouter = require("./routes/adminRoute");
 const batchRouter = require("./routes/batchroute");
+const testRouter = require("./routes/testSection");
 
 
 app.use(cors(
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/user", authRouter);
 app.use("/admin", adminRouter);
 app.use("/batch", batchRouter);
+app.use("/test", testRouter)
 
 
 

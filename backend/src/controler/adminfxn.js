@@ -37,6 +37,33 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const makeAdmin = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(404).send("Id is not defined ")
+        }
+
+        const user = await User.findById(id);
+
+        if (!user) {
+            return res.status(400).send("User does not exist ")
+        }
+
+        if (user.role === 'admin') {
+            return res.status(400).send("User is already an admin");
+        }
+        user.role = 'admin';
+
+        await user.save()
+
+        res.send("User converted into the admin")
+
+    }
+    catch (err) {
+        res.status(500).send("error in create admin " + err.message)
+    }
+}
 
 
-module.exports = { getAllUser,deleteUser}
+module.exports = { getAllUser, deleteUser,makeAdmin}

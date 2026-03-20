@@ -42,5 +42,19 @@ const batchValidator = (data) => {
 
 }
 
+const testValidator =(data)=>{
+   if(!data){
+    throw new Error("data is not avaible from the client side")
 
-module.exports = {validateData, batchValidator};
+    const maditoryField = ["TestName","ClassName","question"]
+
+    const isAllowed = maditoryField.every((k)=>Object.keys(data).includes(k))
+
+    if(!isAllowed){
+        throw new Error("All field are required")
+    }
+   }
+}
+
+
+module.exports = {validateData, batchValidator, testValidator};
