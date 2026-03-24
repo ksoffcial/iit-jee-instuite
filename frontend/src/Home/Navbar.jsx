@@ -25,10 +25,10 @@ import { logoutUser } from '../authSlice';
 gsap.registerPlugin(ScrollTrigger);
 
 const navLinks = [
-  { name: 'Courses', href: '#courser', icon: BookOpen,route:"/course" },
-  { name: 'Mock Tests', href: '#tests', icon: Zap,route:"/course" },
-  { name: 'Results', href: '#results', icon: Trophy,route:"/result" },
-  { name: 'JEE/NEET', href: '#material', icon: Atom,route:"/course" },
+  { name: 'Courses',  icon: BookOpen,route:"/course" },
+  { name: 'Mock Tests', icon: Zap,route:"/testSection" },
+  { name: 'Results' , icon: Trophy,route:"/result" },
+  { name: 'JEE/NEET',  icon: Atom,route:"/course" },
 ];
 
 const Navbar = () => {
@@ -143,7 +143,7 @@ const Navbar = () => {
       `}</style>
 
       {/* Top Announcement Bar */}
-      <div className="nav-font fixed top-0  bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 text-white py-2 overflow-hidden  z-[101]">
+      <div className="nav-font fixed top-0   bg-gradient-to-r from-blue-700 via-blue-600 to-cyan-600 text-white py-2 overflow-hidden  z-[101]">
         <div className="flex">
           <div className="topbar-track flex whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
@@ -191,9 +191,8 @@ const Navbar = () => {
           {/* ── Desktop Nav Links ── */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map(({ name,route, href, icon: Icon }) => (
-              <a
+              <button
                 key={name}
-                href={href}
                 onClick={() => navigate(`${route}`)}
                 className={`nav-link-hover relative flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 ${
                   activeLink === name
@@ -203,7 +202,7 @@ const Navbar = () => {
               >
                 <Icon size={15} strokeWidth={2} />
                 {name}
-              </a>
+              </button>
             ))}
           </div>
 

@@ -3,7 +3,7 @@ import axiosClient from '../utils/axisoClient';
 import { User, Mail, Phone, Shield, Trash2, Loader2, AlertCircle } from 'lucide-react';
 
 const MakeAdmin = () => {
-    const [userData, setUserData] = useState([]);
+    const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -24,7 +24,6 @@ const MakeAdmin = () => {
     useEffect(() => {
         fetchData();
     }, []);
-
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this user?")) {
             try {

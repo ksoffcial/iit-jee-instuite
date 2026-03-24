@@ -26,15 +26,32 @@ const deleteTest = async (req, res) => {
     }
 }
 
-const getAllTest = async (req,res) =>{
-    try{
-        const testData = await Test.find().select("_id TestName ClassName questions");
+const getAllTest = async (req, res) => {
+    try {
+        const testData = await Test.find();
         res.status(200).send(testData)
 
     }
-    catch(err){
+    catch (err) {
         res.status(404).send("not found data" + err.message)
     }
 }
 
-module.exports = { createTest, deleteTest,getAllTest  };
+const getById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        
+        if (!id) {
+            return res.status(500).send("error in getById" + err.message)
+        }
+
+        const testData = await Test.findById(id);
+        res.status(200).send([testData])
+    }
+    catch(err){
+        console.log(err.message)
+        res.status(500).send("Error in the getbyid" + err.message)
+    }
+}
+
+module.exports = { createTest, deleteTest, getAllTest, getById };

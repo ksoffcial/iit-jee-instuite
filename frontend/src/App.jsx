@@ -17,6 +17,9 @@ import MakeAdmin from './Admin/MakeAdmin'
 import TestSection from './Admin/TestSection'
 import CreateTest from './Admin/CreateTest'
 import DeleteTest from './Admin/DeleteTest'
+import TestData from './Home/TestData'
+import Navbar from './Home/Navbar'
+import TestPanel from './Home/TestPanel'
 
 
 
@@ -47,8 +50,9 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={isAuthenticated ? <Navigate to="/" /> : <Login />} />
         <Route path='/register' element={isAuthenticated ? <Navigate to="/" /> : <Register />} />
-        <Route path='/course' element={<><Courses /> <BatchUi /> <Footer /></>} />
-        <Route path='/result' element={<StudentResults />} />
+        <Route path='/course' element={<><Navbar /> <Courses /> <BatchUi /> <Footer /></>} />
+        <Route path='/result' element={<> <Navbar /> <StudentResults /> <Footer /></>} />
+        <Route path='/testSection' element={<><Navbar></Navbar> <TestData /> <Footer /></>} />
         <Route path='/admin' element={isAuthenticated && user.role == "admin" ? <AdminPanel /> : <Navigate to="/" />} />
         <Route path='/admin/getAllUser' element={isAuthenticated && user.role == 'admin' ? <AllUser /> : <Navigate to="/" />} />
         <Route path='/admin/batchDetails' element={isAuthenticated && user.role == 'admin' ? <BatchDetails /> : <Navigate to='/' />} />
@@ -57,6 +61,7 @@ const App = () => {
         <Route path='/admin/createTest' element={isAuthenticated && user.role == 'admin' ? <TestSection /> : <Navigate to='/' />} />
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
+        <Route path='/test/attempt/:id' element={<TestPanel />} />
       </Routes>
     </div>
   )
