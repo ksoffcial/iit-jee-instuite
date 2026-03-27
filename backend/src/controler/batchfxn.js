@@ -18,7 +18,7 @@ const createBatch = async (req, res) => {
 const getAllBatch = async (req, res) => {
     try {
         const batchData = await Batch.find().select("_id BatchName className timePeriods startDate time subjects description");
-        console.log(batchData)
+        // console.log(batchData)
 
         res.status(200).send(batchData);
     }

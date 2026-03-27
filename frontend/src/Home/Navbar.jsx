@@ -14,6 +14,7 @@ import {
   Phone,
   Bell,
   Sparkles,
+  FunctionSquare
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
@@ -28,14 +29,14 @@ const navLinks = [
   { name: 'Courses',  icon: BookOpen,route:"/course" },
   { name: 'Mock Tests', icon: Zap,route:"/testSection" },
   { name: 'Results' , icon: Trophy,route:"/result" },
-  { name: 'JEE/NEET',  icon: Atom,route:"/course" },
+  // { name: 'JEE/NEET',  icon: Atom,route:"/jee" },
+  { name: 'Sigma Ai',  icon:FunctionSquare ,route:"/doubt" },
 ];
 
 const Navbar = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('');

@@ -5,7 +5,7 @@ const batchRouter = express.Router();
 
 batchRouter.post("/create", adminMiddleWare, createBatch)
 batchRouter.delete("/delete/:batchId", adminMiddleWare, deleteBatch)
-batchRouter.get("/allBatch", adminMiddleWare, getAllBatch)
+batchRouter.get("/allBatch", getAllBatch)
 
 
 module.exports = batchRouter;

@@ -9,6 +9,7 @@ const cors = require('cors');
 const adminRouter = require("./routes/adminRoute");
 const batchRouter = require("./routes/batchroute");
 const testRouter = require("./routes/testSection");
+const aiRouter = require("./routes/ai");
 
 
 app.use(cors(
@@ -32,6 +33,7 @@ app.use("/user", authRouter);
 app.use("/admin", adminRouter);
 app.use("/batch", batchRouter);
 app.use("/test", testRouter)
+app.use("/ai", aiRouter)
 
 
 

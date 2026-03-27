@@ -23,7 +23,7 @@ const registerUser = async (req, res) => {
         }
 
         const token = jwt.sign({ _id: newUser._id, emailId: newUser.emailId, role: newUser.role }, process.env.PRIVATE_KEY, { expiresIn: 3600 })
-        res.cookie('token', token, { httpOnly: true, secure: false, sameSite: "lax", maxAge: 3600 * 1000 })
+        res.cookie('token', token, { httpOnly: true, secure: true, sameSite: "none", maxAge: 3600 * 1000 })
 
         res.status(200).json({
             user: reply,
@@ -61,7 +61,7 @@ const loginUser = async (req, res) => {
         }
 
         const token = jwt.sign({ _id: user._id, emailId: user.emailId, role: user.role }, process.env.PRIVATE_KEY, { expiresIn: 3600 })
-        res.cookie('token', token, { httpOnly: true, secure: false, sameSite: "lax", maxAge: 3600 * 1000 })
+        res.cookie('token', token, { httpOnly: true, secure: true, sameSite: "none", maxAge: 3600 * 1000 })
 
 
         const reply = {
@@ -87,7 +87,7 @@ const loginUser = async (req, res) => {
 
 const logOut = (req, res) => {
     try {
-        res.cookie("token", null, { httpOnly: true, secure: false, sameSite: "lax", expires: new Date(Date.now()) })
+        res.cookie("token", null, { httpOnly: true, secure: true, sameSite: "none", expires: new Date(Date.now()) })
         res.send("logout sucesfully ")
     }
     catch (err) {

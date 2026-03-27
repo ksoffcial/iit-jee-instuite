@@ -20,6 +20,8 @@ import DeleteTest from './Admin/DeleteTest'
 import TestData from './Home/TestData'
 import Navbar from './Home/Navbar'
 import TestPanel from './Home/TestPanel'
+import Jee from './Home/Jee'
+import AiChat from './Home/AiChat'
 
 
 
@@ -53,6 +55,7 @@ const App = () => {
         <Route path='/course' element={<><Navbar /> <Courses /> <BatchUi /> <Footer /></>} />
         <Route path='/result' element={<> <Navbar /> <StudentResults /> <Footer /></>} />
         <Route path='/testSection' element={<><Navbar></Navbar> <TestData /> <Footer /></>} />
+        <Route path='/jee' element={<Jee />} />
         <Route path='/admin' element={isAuthenticated && user.role == "admin" ? <AdminPanel /> : <Navigate to="/" />} />
         <Route path='/admin/getAllUser' element={isAuthenticated && user.role == 'admin' ? <AllUser /> : <Navigate to="/" />} />
         <Route path='/admin/batchDetails' element={isAuthenticated && user.role == 'admin' ? <BatchDetails /> : <Navigate to='/' />} />
@@ -62,6 +65,7 @@ const App = () => {
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
         <Route path='/test/attempt/:id' element={<TestPanel />} />
+        <Route path='/doubt' element={<AiChat/>}/>
       </Routes>
     </div>
   )
