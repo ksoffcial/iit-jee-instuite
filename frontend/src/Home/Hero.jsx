@@ -150,7 +150,7 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button className="group flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 btn-glow">
+              <button onClick={()=>navigate("/query")} className="group flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 btn-glow">
                 Start Free Trial
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>

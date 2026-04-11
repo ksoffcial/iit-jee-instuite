@@ -10,12 +10,15 @@ const adminRouter = require("./routes/adminRoute");
 const batchRouter = require("./routes/batchroute");
 const testRouter = require("./routes/testSection");
 const aiRouter = require("./routes/ai");
+const mentorRouter = require("./routes/mentorRoute");
+const eRouter = require("./routes/enquiryRoute");
 
 
 app.use(cors(
     {
         origin: ['http://localhost:5173',
-            'https://iit-jee-instuite.vercel.app'],
+            'https://iit-jee-instuite.vercel.app',
+            'http://localhost:5174'],
         credentials: true
     }
 ))
@@ -34,6 +37,8 @@ app.use("/admin", adminRouter);
 app.use("/batch", batchRouter);
 app.use("/test", testRouter)
 app.use("/ai", aiRouter)
+app.use("/mentor", mentorRouter)
+app.use("/query",eRouter)
 
 
 

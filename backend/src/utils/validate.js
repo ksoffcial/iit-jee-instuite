@@ -42,19 +42,33 @@ const batchValidator = (data) => {
 
 }
 
-const testValidator =(data)=>{
-   if(!data){
-    throw new Error("data is not avaible from the client side")
+const testValidator = (data) => {
+    if (!data) {
+        throw new Error("data is not avaible from the client side")
 
-    const maditoryField = ["TestName","ClassName","question"]
+        const maditoryField = ["TestName", "ClassName", "question"]
 
-    const isAllowed = maditoryField.every((k)=>Object.keys(data).includes(k))
+        const isAllowed = maditoryField.every((k) => Object.keys(data).includes(k))
 
-    if(!isAllowed){
+        if (!isAllowed) {
+            throw new Error("All field are required")
+        }
+    }
+}
+
+const validateQuery = (data) => {
+    if (!data) {
+        throw new Error("data is not avaible from the client side")
+    }
+
+    const maditoryField = ["studenName", "standard", "contactNumber", "location", "batchDetails", "batchStatus"];
+
+    const isAllowed = maditoryField.every((k) => Object.keys(data).includes(k))
+
+    if (!isAllowed) {
         throw new Error("All field are required")
     }
-   }
 }
 
 
-module.exports = {validateData, batchValidator, testValidator};
+module.exports = { validateData, batchValidator, testValidator,validateQuery };

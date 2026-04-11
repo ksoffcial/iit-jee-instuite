@@ -22,6 +22,11 @@ import Navbar from './Home/Navbar'
 import TestPanel from './Home/TestPanel'
 import Jee from './Home/Jee'
 import AiChat from './Home/AiChat'
+import Mentordetails from './Admin/Mentordetails'
+import GetMentor from './Admin/GetMentor'
+import AddMentor from './Admin/AddMentor'
+import Userquery from './Home/Userquery'
+import Query from './Admin/Query'
 
 
 
@@ -65,7 +70,12 @@ const App = () => {
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
         <Route path='/test/attempt/:id' element={<TestPanel />} />
-        <Route path='/doubt' element={<AiChat/>}/>
+        <Route path='/doubt' element={isAuthenticated ? <AiChat/> : <Login/>}/>
+        <Route path='/admin/mentor' element={isAuthenticated && user.role == "admin" ? <Mentordetails/> : <Navigate to="/"/>}/>
+        <Route path='/mentor/deletementor' element={isAuthenticated && user.role == "admin" ? <GetMentor/> : <Navigate to="/"/>}/>
+        <Route path='/mentor/addmentor' element={isAuthenticated && user.role == "admin" ? <AddMentor/> : <Navigate to="/"/>}/>
+        <Route path='/admin/query' element={isAuthenticated && user.role == "admin" ? <Query/> : <Navigate to="/"/>}/>
+        <Route path='/query' element={<Userquery/>}/>
       </Routes>
     </div>
   )

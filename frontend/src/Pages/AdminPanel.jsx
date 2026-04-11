@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Users, UserPlus, FileText, FolderPlus, ArrowRight } from 'lucide-react';
+import { Users, UserPlus,Search, FileText, FolderPlus, ArrowRight } from 'lucide-react';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -40,6 +40,20 @@ const AdminPanel = () => {
             route: "/admin/batchDetails",
             icon: <FolderPlus className="text-info" size={24} />,
             desc: "Organize students into specific academic batches."
+        },
+        {
+            id:5,
+            name:'Mentor Details',
+            route:'/admin/mentor',
+            icon: <FolderPlus className="text-info" size={24} />,
+            desc:"This section is use to add mentor and delete"
+        },
+        {
+            id:6,
+            name:'Manage Query Section',
+            route:'/admin/query',
+            icon:  <Search size={24} className="text-accent" />,
+            desc:"This section is used to manage the batch related query"
         }
     ];
 
