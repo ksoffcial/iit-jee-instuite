@@ -77,7 +77,7 @@ const App = () => {
         <Route path='/mentor/addmentor' element={isAuthenticated && user.role == "admin" ? <AddMentor/> : <Navigate to="/"/>}/>
         <Route path='/admin/query' element={isAuthenticated && user.role == "admin" ? <Query/> : <Navigate to="/"/>}/>
         <Route path='/query' element={<Userquery/>}/>
-        <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage/> : <Navigate to="/"/>}/>
+        <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage/> : <Navigate to="/login"/>}/>
       </Routes>
     </div>
   )
