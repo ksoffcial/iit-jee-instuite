@@ -1,6 +1,14 @@
-import { useState, useEffect } from 'react'
-import { GraduationCap, Clock, Star, ChevronRight, BookOpen, Award } from 'lucide-react'
-import axiosClient from '../utils/axisoClient'; 
+import { useState, useEffect, useRef } from 'react'
+import { GraduationCap, Clock, Star, ChevronRight, ChevronLeft, BookOpen, Award } from 'lucide-react'
+import axiosClient from '../utils/axisoClient';
+
+// Import Swiper React components and modules
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation,Pagination } from 'swiper/modules';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const subjectColors = {
   Engineering: { bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-300' },
@@ -12,35 +20,26 @@ const subjectColors = {
 }
 
 const MentorCard = ({ data, index }) => {
-  const [hovered, setHovered] = useState(false)
   const color = subjectColors[data.subject] || subjectColors.Engineering
 
   return (
     <div
-      className="group relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col"
-      style={{ animationDelay: `${index * 100}ms` }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className="group relative bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 flex flex-col h-full border border-stone-100"
     >
-      {/* Top accent line */}
-      <div
-        className="h-1 w-full"
-        style={{ background: 'linear-gradient(90deg, #f59e0b, #f97316)' }}
-      />
+      <div className="h-1 w-full" style={{ background: 'linear-gradient(90deg, #f59e0b, #f97316)' }} />
 
-      {/* Image area */}
       <div className="relative overflow-hidden h-56 sm:h-52 lg:h-60 bg-stone-100">
         <img
           src={data.image}
           alt={data.mentorName}
           className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
           onError={(e) => {
-            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.mentorName)}&size=400&background=f3f0eb&color=92400e&bold=true&font-size=0.4`
-          }} // ← was data.name, fixed to data.mentorName
+            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(data.mentorName)}&size=400&background=f3f0eb&color=92400e&bold=true`
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-        <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-semibold border ${color.bg} ${color.text} ${color.border} backdrop-blur-sm`}>
+        <div className={`absolute top-3 right-3 px-3 py-1 rounded-full text-[10px] font-bold border ${color.bg} ${color.text} ${color.border} backdrop-blur-sm uppercase tracking-wider`}>
           {data.subject}
         </div>
 
@@ -50,16 +49,13 @@ const MentorCard = ({ data, index }) => {
         </div>
       </div>
 
-      {/* Content */}
       <div className="p-5 flex flex-col flex-1 gap-3">
-        <div>
-          <h3 className="text-lg font-bold text-stone-900 leading-tight">{data.mentorName}</h3>
-        </div>
+        <h3 className="text-lg font-bold text-stone-900 leading-tight">{data.mentorName}</h3>
 
         <div className="flex flex-col gap-2">
           <div className="flex items-start gap-2 text-stone-600">
             <GraduationCap size={15} className="mt-0.5 shrink-0 text-amber-600" />
-            <span className="text-sm leading-snug">{data.degree}</span>
+            <span className="text-sm leading-snug line-clamp-1">{data.degree}</span>
           </div>
           <div className="flex items-center gap-2 text-stone-600">
             <Clock size={15} className="shrink-0 text-amber-600" />
@@ -68,10 +64,10 @@ const MentorCard = ({ data, index }) => {
         </div>
 
         <div className="border-t border-stone-100 mt-auto pt-3">
-          <button className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-stone-900 text-white text-sm font-semibold hover:bg-amber-600 transition-colors duration-300 group/btn">
+          <button className="w-full btn btn-sm bg-stone-900 hover:bg-amber-600 text-white border-none normal-case rounded-xl h-11">
             <BookOpen size={14} />
-            <span>View Profile</span>
-            <ChevronRight size={14} className="transition-transform duration-200 group-hover/btn:translate-x-0.5" />
+            View Profile
+            <ChevronRight size={14} />
           </button>
         </div>
       </div>
@@ -80,78 +76,100 @@ const MentorCard = ({ data, index }) => {
 }
 
 const Mentor = () => {
-  // ← Moved teachers state + fetchData here, where it's actually used
   const [teachers, setTeachers] = useState([])
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
 
   const fetchData = async () => {
     try {
       const response = await axiosClient.get("/mentor/getMentor")
-      
       setTeachers(response.data)
     } catch (err) {
       console.log("Error fetching mentors: " + err.message)
     }
   }
 
-
-
   useEffect(() => {
     fetchData()
   }, [])
 
   return (
-    <section className="min-h-screen bg-[#faf8f5] py-16 px-4 sm:px-6 lg:px-12">
-      {/* Header */}
+    <section className="min-h-screen bg-[#faf8f5] py-16 px-4">
+      {/* Header section remains the same */}
       <div className="max-w-7xl mx-auto mb-12 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-amber-700 text-sm font-semibold mb-4">
           <Award size={14} />
           Expert Educators
         </div>
-        <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-black text-stone-900 leading-tight tracking-tight mb-4"
-          style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}
-        >
-          Meet Your{' '}
-          <span className="relative inline-block">
-            <span className="relative z-10 text-amber-600">Mentors</span>
-            <span
-              className="absolute bottom-1 left-0 w-full h-3 bg-amber-200 -z-0 rounded"
-              style={{ transform: 'skewX(-3deg)' }}
-            />
-          </span>
+        <h1 className="text-4xl sm:text-5xl font-black text-stone-900 mb-4 font-serif">
+          Meet Your <span className="text-amber-600">Mentors</span>
         </h1>
-        <p className="text-stone-500 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-          Learn from India's most experienced educators, handpicked for their expertise and passion for teaching.
-        </p>
       </div>
 
-      {/* Stats bar */}
-      <div className="max-w-7xl mx-auto mb-12">
-        <div className="grid grid-cols-3 gap-4 sm:gap-6 max-w-lg mx-auto">
-          {[
-            { value: teachers?.length, label: 'Expert Mentors' },
-            { value: '500+', label: 'Students Taught' },
-            { value: '4.8★', label: 'Avg. Rating' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center bg-white rounded-2xl py-4 px-3 shadow-sm border border-stone-100">
-              <div className="text-2xl font-black text-amber-600">{stat.value}</div>
-              <div className="text-xs text-stone-500 mt-0.5 leading-tight">{stat.label}</div>
-            </div>
+      <div className="max-w-7xl mx-auto relative group">
+        
+        {/* Navigation Buttons - Hidden on very small screens, visible on hover */}
+        <button 
+          ref={prevRef}
+          className="absolute left-[-20px] top-1/2 -translate-y-1/2 z-20 btn btn-circle bg-white shadow-xl border-none hover:bg-amber-500 hover:text-white transition-all duration-300 hidden md:flex"
+        >
+          <ChevronLeft />
+        </button>
+        
+        <button 
+          ref={nextRef}
+          className="absolute right-[-20px] top-1/2 -translate-y-1/2 z-20 btn btn-circle bg-white shadow-xl border-none hover:bg-amber-500 hover:text-white transition-all duration-300 hidden md:flex"
+        >
+          <ChevronRight />
+        </button>
+
+        {/* Carousel / Grid Logic */}
+        <Swiper
+          modules={[Autoplay, Navigation]}
+          spaceBetween={24}
+          slidesPerView={1}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          onBeforeInit={(swiper) => {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+          }}
+          autoplay={{
+            delay: 2500, // 2.5 seconds for a smooth professional feel
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            // Desktop: Show Grid (3 slides)
+            1024: {
+              slidesPerView: 3,
+              autoplay: false, // Optional: disable auto-scroll on desktop
+            },
+            // Tablet: Show 2 slides
+            640: {
+              slidesPerView: 2,
+            }
+          }}
+          className="pb-12"
+        >
+          {teachers.map((teacher, idx) => (
+            <SwiperSlide key={idx} className="h-auto">
+              <MentorCard data={teacher} index={idx} />
+            </SwiperSlide>
           ))}
+        </Swiper>
+
+        {/* Mobile-only Navigation Buttons (Floating style) */}
+        <div className="flex justify-center gap-4 mt-4 md:hidden">
+            <button onClick={() => prevRef.current?.click()} className="btn btn-circle bg-stone-900 text-white"><ChevronLeft size={20}/></button>
+            <button onClick={() => nextRef.current?.click()} className="btn btn-circle bg-stone-900 text-white"><ChevronRight size={20}/></button>
         </div>
       </div>
 
-      {/* Cards Grid */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8">
-        {teachers.map((teacher, idx) => (
-          <MentorCard key={idx} data={teacher} index={idx} />
-        ))}
-      </div>
-
-      {/* Footer CTA */}
       <div className="max-w-7xl mx-auto mt-14 text-center">
-        <p className="text-stone-500 text-sm mb-4">Want to join our teaching team?</p>
-        <button className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-stone-900 text-stone-900 font-bold text-sm hover:bg-stone-900 hover:text-white transition-all duration-300">
+        <button className="btn btn-outline border-2 border-stone-900 hover:bg-stone-900 rounded-full px-8">
           Become a Mentor
           <ChevronRight size={16} />
         </button>
@@ -160,4 +178,4 @@ const Mentor = () => {
   )
 }
 
-export default Mentor
+export default Mentor;

@@ -71,13 +71,13 @@ const App = () => {
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
         <Route path='/test/attempt/:id' element={<TestPanel />} />
-        <Route path='/doubt' element={isAuthenticated ? <AiChat/> : <Login/>}/>
-        <Route path='/admin/mentor' element={isAuthenticated && user.role == "admin" ? <Mentordetails/> : <Navigate to="/"/>}/>
-        <Route path='/mentor/deletementor' element={isAuthenticated && user.role == "admin" ? <GetMentor/> : <Navigate to="/"/>}/>
-        <Route path='/mentor/addmentor' element={isAuthenticated && user.role == "admin" ? <AddMentor/> : <Navigate to="/"/>}/>
-        <Route path='/admin/query' element={isAuthenticated && user.role == "admin" ? <Query/> : <Navigate to="/"/>}/>
-        <Route path='/query' element={<Userquery/>}/>
-        <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage/> : <Navigate to="/login"/>}/>
+        <Route path='/doubt' element={isAuthenticated ? <AiChat /> : <Login />} />
+        <Route path='/admin/mentor' element={isAuthenticated && user.role == "admin" ? <Mentordetails /> : <Navigate to="/" />} />
+        <Route path='/mentor/deletementor' element={isAuthenticated && user.role == "admin" ? <GetMentor /> : <Navigate to="/" />} />
+        <Route path='/mentor/addmentor' element={isAuthenticated && user.role == "admin" ? <AddMentor /> : <Navigate to="/" />} />
+        <Route path='/admin/query' element={isAuthenticated && user.role == "admin" ? <Query /> : <Navigate to="/" />} />
+        <Route path='/query' element={<Userquery />} />
+        <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage /> : <Navigate to="/login" />} />
       </Routes>
     </div>
   )
