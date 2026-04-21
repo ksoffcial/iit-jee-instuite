@@ -144,12 +144,12 @@ const Mentor = () => {
           breakpoints={{
             // Desktop: Show Grid (3 slides)
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 4,
               autoplay: false, // Optional: disable auto-scroll on desktop
             },
             // Tablet: Show 2 slides
             640: {
-              slidesPerView: 2,
+              slidesPerView: 3,
             }
           }}
           className="pb-12"

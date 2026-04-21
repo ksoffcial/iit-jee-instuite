@@ -28,6 +28,10 @@ import AddMentor from './Admin/AddMentor'
 import Userquery from './Home/Userquery'
 import Query from './Admin/Query'
 import EnrollPage from './Pages/EnrollPage'
+import UserProfile from './Pages/UserProfile'
+import EnrollmentDetails from './Admin/EnrollmentDetails'
+import EnrollmentBatch from './Admin/EnrollmentBatch'
+import TotalEnrollment from './Admin/TotalEnrollment'
 
 
 
@@ -76,8 +80,12 @@ const App = () => {
         <Route path='/mentor/deletementor' element={isAuthenticated && user.role == "admin" ? <GetMentor /> : <Navigate to="/" />} />
         <Route path='/mentor/addmentor' element={isAuthenticated && user.role == "admin" ? <AddMentor /> : <Navigate to="/" />} />
         <Route path='/admin/query' element={isAuthenticated && user.role == "admin" ? <Query /> : <Navigate to="/" />} />
+        <Route path='/admin/enrollment' element={isAuthenticated && user.role == "admin" ? <EnrollmentDetails/>: <Navigate to="/" />} />
+        <Route path='/admin/totalenrollment' element={isAuthenticated && user.role == "admin" ? <TotalEnrollment/>: <Navigate to="/" />} />
+        <Route path='/enrollment/details/:id' element={isAuthenticated && user.role == "admin" ? <EnrollmentBatch/>: <Navigate to="/" />} />
         <Route path='/query' element={<Userquery />} />
         <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage /> : <Navigate to="/login" />} />
+        <Route path='/user/myprofile' element={isAuthenticated ? <UserProfile/>:<Navigate to="/login"/>}/>
       </Routes>
     </div>
   )

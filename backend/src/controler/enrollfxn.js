@@ -4,8 +4,7 @@ const enrollNow = async (req, res) => {
     try {
         const userId = req.result._id;
         const courseId = req.params.id;
-        const existing = await Enrollement.findOne({ courseId: courseId });
-
+        const existing = await Enrollement.findOne({ courseId: courseId,userId:userId });
         if (existing) {
             return res.send("you are already enrolled in the courses");
         }
@@ -14,7 +13,6 @@ const enrollNow = async (req, res) => {
             courseId: courseId,
             paymentStatus: "paid"
         })
-
         res.status(200).send("You Are enrolled sucessfully ");
     }
     catch (err) {
@@ -49,20 +47,20 @@ const studenEnrollment = async (req, res) => {
 
 // for admin uses 
 
-const totalEnrollment = async (req,res)=>{
-    try{
+const totalEnrollment = async (req, res) => {
+    try {
 
         const allData = await Enrollement.find();
 
-        if(!allData){
+        if (!allData) {
             return res.status(404).send("Not able to fetch data")
         }
 
         res.status(200).send(allData);
-        
+
 
     }
-    catch(err){
+    catch (err) {
         res.status(404).send("Error in Total enrolled student " + err.message)
     }
 }
@@ -72,4 +70,4 @@ const totalEnrollment = async (req,res)=>{
 
 
 
-module.exports = { enrollNow, studenEnrollment ,totalEnrollment}
+module.exports = { enrollNow, studenEnrollment, totalEnrollment }

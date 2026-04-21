@@ -37,6 +37,7 @@ const EnrollPage = () => {
 
   const handletoClick = async (id) => {
     try {
+      console.log(id)
       const response = await axiosClient.post(`/enroll/enrollCourse/${id}`)
       alert("You Have Enrolled in this course ")
       navigate('/')

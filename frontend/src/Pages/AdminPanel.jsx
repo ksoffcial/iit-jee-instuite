@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Users, UserPlus,Search, FileText, FolderPlus, ArrowRight } from 'lucide-react';
+import { Users, UserPlus,Search, FileText, FolderPlus, ArrowRight} from 'lucide-react';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -54,6 +54,13 @@ const AdminPanel = () => {
             route:'/admin/query',
             icon:  <Search size={24} className="text-accent" />,
             desc:"This section is used to manage the batch related query"
+        },
+        {
+            id:7,
+            name:'Enrollment Details',
+            route:'/admin/enrollment',
+            icon:  <Search size={24} className="text-accent" />,
+            desc:"This section is used to track the enrollment details of the student"
         }
     ];
 

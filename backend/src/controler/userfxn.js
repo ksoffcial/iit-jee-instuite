@@ -115,4 +115,25 @@ const logOut = async (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser, logOut }
+const getUserByid = async () => {
+    try {
+        const userId = req.result._id;
+
+        if (!userId) {
+            return res.status(404).send("Id is not defined ");
+        }
+
+        const result = await User.findById(userId);
+
+        if (!result) {
+            res.status(404).send("user does not exist or Some internal Issue ");
+        }
+
+        res.status(200).send(result);
+    }
+    catch (err) {
+        res.status(500).send("some error to get the user data " + err.message);
+    }
+}
+
+module.exports = { registerUser, loginUser, logOut, getUserByid }

@@ -258,9 +258,9 @@ const Navbar = () => {
                     </li>
                     <div className="divider my-0 opacity-30" />
                     <li>
-                      <a className="flex items-center gap-3 py-2.5 px-3 rounded-xl hover:bg-blue-50 hover:text-blue-700 font-semibold text-gray-700 text-sm">
-                        <User size={16} /> My Profile
-                      </a>
+                      <button onClick={()=>navigate("/user/myprofile")} className="flex items-center gap-3 py-2.5 px-3 rounded-xl hover:bg-blue-50 hover:text-blue-700 font-semibold text-gray-700 text-sm">
+                        <User size={16} /> My Profile 
+                      </button>
                     </li>
                     {user?.role === 'admin' && (
                       <li>

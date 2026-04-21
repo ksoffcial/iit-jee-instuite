@@ -1,5 +1,5 @@
 const express = require("express");
-const { registerUser, loginUser, logOut } = require("../controler/userfxn");
+const { registerUser, loginUser, logOut, getUserByid } = require("../controler/userfxn");
 const userMiddleware = require("../middleware/userMiddleware");
 const authRouter = express.Router();
 
@@ -25,7 +25,9 @@ authRouter.get('/check', userMiddleware, (req, res) => {
         console.log("error occured in check url " + err.message)
         res.status(500).send("error occured in check url " + err.message)
     }
-})
+});
+
+authRouter.get("/userData",userMiddleware,getUserByid);
 
 
 

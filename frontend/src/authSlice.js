@@ -38,7 +38,7 @@ export const checkUser =createAsyncThunk(
                 return response.data.user
             }
             catch (err) {
-                return rejectWithValue(err.response?.data?.message || err.message)
+                // return rejectWithValue(err.response?.data?.message || err.message)
             }
         }
     )

@@ -146,9 +146,10 @@ const Footer = () => {
                             </div>
                         </div>
 
+
                         {/* ── Col 2: Quick Links ── */}
-                        <div>
-                            <h4 className="text-white font-bold text-sm sm:text-base mb-5 flex items-center gap-2">
+                        <div className='hidden md:block'>
+                            <h4 className="text-white  font-bold text-sm sm:text-base mb-5 flex items-center gap-2">
                                 <span className="w-1 h-4 bg-gradient-to-b from-blue-400 to-cyan-400 rounded-full inline-block" />
                                 Quick Links
                             </h4>
@@ -171,7 +172,7 @@ const Footer = () => {
                         </div>
 
                         {/* ── Col 3: Courses ── */}
-                        <div>
+                        <div className='hidden md:block'>
                             <h4 className="text-white font-bold text-sm sm:text-base mb-5 flex items-center gap-2">
                                 <span className="w-1 h-4 bg-gradient-to-b from-amber-400 to-orange-400 rounded-full inline-block" />
                                 Our Courses
@@ -193,6 +194,7 @@ const Footer = () => {
                                 ))}
                             </ul>
                         </div>
+
 
                         {/* ── Col 4: Contact ── */}
                         <div>
