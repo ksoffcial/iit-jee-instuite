@@ -5,7 +5,6 @@ const enrollNow = async (req, res) => {
     try {
         const userId = req.result._id;
         const courseId = req.params.id;
-
         if (!userId) {
             return res.status(400).send("User is not verified ");
         }
@@ -13,17 +12,17 @@ const enrollNow = async (req, res) => {
             return res.status(400).send("Course is not defined ");
         }
 
-
         const existing = await Enrollement.findOne({ courseId: courseId, userId: userId });
         if (existing) {
             return res.send("you are already enrolled in the courses");
         }
 
+
         const batchData = await Batch.findById(courseId);
         if (!batchData) {
             res.status(404).send("batch data is not defined");
         }
-        const courseFee = batchData.finalPrice;
+        const courseFee = parseInt(batchData.finalPrice);
 
         const enrolStudent = await Enrollement.create({
             userId: userId,
@@ -31,9 +30,13 @@ const enrollNow = async (req, res) => {
             paymentStatus: "paid",
             paymentAmount: courseFee
         })
+        if(!enrolStudent){
+            return res.status(400).send("Error in the enrolstundent");
+        }
         res.status(200).send("You Are enrolled sucessfully ");
     }
     catch (err) {
+        console.log(err.message)
         res.status(404).send("some error in the enroll section of the coures " + err.message)
     }
 
@@ -71,7 +74,7 @@ const courseEnrollment = async (req, res) => {
             return res.status(404).send("Id is not valid ");
         }
 
-        const batchData = await Enrollement.find({ courseId: id }).populate({path: 'userId', select: "fullName emailId phoneNumber"});
+        const batchData = await Enrollement.find({ courseId: id }).populate({ path: 'userId', select: "fullName emailId phoneNumber" });
 
         if (!batchData) {
             return res.status(404).send("Id does not exist ");
@@ -129,4 +132,4 @@ const totalEnrollment = async (req, res) => {
 
 
 
-module.exports = { enrollNow, studenEnrollment, totalEnrollment,courseEnrollment }
+module.exports = { enrollNow, studenEnrollment, totalEnrollment, courseEnrollment }

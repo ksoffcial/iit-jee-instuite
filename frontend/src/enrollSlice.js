@@ -7,7 +7,7 @@ export const enrolmentDetails = createAsyncThunk(
     'get/course',
     async (_, { rejectWithValue }) => {
         try {
-            const response = await axiosClient.get("/enroll/enrollDetails", { withCredentials: true })
+            const response = await axiosClient.get("/enroll/studentEnrollment", { withCredentials: true })
             return response.data
         }
         catch (err) {

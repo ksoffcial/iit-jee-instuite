@@ -6,7 +6,7 @@ const adminMiddleWare = require("../middleware/adminMiddleware");
 
 
 enrollRouter.post("/enrollCourse/:id", userMiddleware,enrollNow);
-enrollRouter.get('/studentenrollDetails',userMiddleware,studenEnrollment)
+enrollRouter.get('/studentEnrollment',userMiddleware,studenEnrollment)
 enrollRouter.get("/allData",adminMiddleWare,totalEnrollment)
 enrollRouter.get("/courseById/:id",adminMiddleWare,courseEnrollment)
 
