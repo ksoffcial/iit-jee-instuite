@@ -1,17 +1,35 @@
+const Batch = require("../models/batchData");
 const Enrollement = require("../models/enrolledStudent");
 
 const enrollNow = async (req, res) => {
     try {
         const userId = req.result._id;
         const courseId = req.params.id;
-        const existing = await Enrollement.findOne({ courseId: courseId,userId:userId });
+
+        if (!userId) {
+            return res.status(400).send("User is not verified ");
+        }
+        if (!courseId) {
+            return res.status(400).send("Course is not defined ");
+        }
+
+
+        const existing = await Enrollement.findOne({ courseId: courseId, userId: userId });
         if (existing) {
             return res.send("you are already enrolled in the courses");
         }
+
+        const batchData = await Batch.findById(courseId);
+        if (!batchData) {
+            res.status(404).send("batch data is not defined");
+        }
+        const courseFee = batchData.finalPrice;
+
         const enrolStudent = await Enrollement.create({
             userId: userId,
             courseId: courseId,
-            paymentStatus: "paid"
+            paymentStatus: "paid",
+            paymentAmount: courseFee
         })
         res.status(200).send("You Are enrolled sucessfully ");
     }
@@ -45,18 +63,59 @@ const studenEnrollment = async (req, res) => {
     }
 }
 
+const courseEnrollment = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!id) {
+            return res.status(404).send("Id is not valid ");
+        }
+
+        const batchData = await Enrollement.find({ courseId: id }).populate({path: 'userId', select: "fullName emailId phoneNumber"});
+
+        if (!batchData) {
+            return res.status(404).send("Id does not exist ");
+        }
+
+        const totalAmount = batchData.reduce((total, curr) => {
+            return total + (curr.paymentAmount || 0);
+        }, 0);
+
+        const totalStudent = allData.length;
+        res.status(200).json({
+            data: batchData,
+            totalcollection: totalAmount,
+            totalStudent: totalStudent
+        });
+
+    }
+    catch (err) {
+        res.status(404).send("Error in courseEnrollment " + err.message)
+    }
+}
+
 // for admin uses 
 
 const totalEnrollment = async (req, res) => {
     try {
 
-        const allData = await Enrollement.find();
+        const allData = await Enrollement.find().populate({ path: 'userId', select: "fullName emailId phoneNumber" }).populate({ path: "courseId", select: "BatchName timePeriods" });
 
         if (!allData) {
             return res.status(404).send("Not able to fetch data")
         }
 
-        res.status(200).send(allData);
+        const totalAmount = allData.reduce((total, curr) => {
+            return total + (curr.paymentAmount || 0);
+        }, 0)
+
+        const totalStudent = allData.length;
+
+        res.status(200).json({
+            data: allData,
+            totalcollection: totalAmount,
+            totalStudent: totalStudent
+        });
 
 
     }
@@ -70,4 +129,4 @@ const totalEnrollment = async (req, res) => {
 
 
 
-module.exports = { enrollNow, studenEnrollment, totalEnrollment }
+module.exports = { enrollNow, studenEnrollment, totalEnrollment,courseEnrollment }

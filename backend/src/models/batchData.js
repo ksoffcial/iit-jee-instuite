@@ -15,7 +15,7 @@ const batchSchema = new Schema({
         enum: ["12th", "11th", "dropper", "jee", "neet"]
     },
     startDate: {
-        type: String,
+        type: Date,
         required: true,
     },
     time: [
@@ -52,6 +52,18 @@ const batchSchema = new Schema({
     timePeriods: {
         type: String,
         required: true
+    },
+    totalAmount:{
+        type:String,
+        required:true
+    },
+    totalDiscount:{
+        type:String,
+        required:true
+    },
+    finalPrice:{ 
+        type:String,
+        required:true,
     }
 
 }, { timestamps: true })

@@ -179,6 +179,27 @@ const EnrollPage = () => {
             </div>
           </div>
 
+          <div >
+            <h2>price details</h2>
+            <div className='grid grid-cols-3'>
+              <div>
+                <h2>Actual price of the course </h2>
+                <h3>{batchData.totalAmount} </h3>
+              </div>
+              <div>
+                <h2>Discount </h2>
+                <h3>{batchData.totalAmount} </h3>
+              </div>
+              <div>
+                <h2>final Price of the course </h2>
+                <h3>{batchData.totalAmount} </h3>
+              </div>
+            </div>
+            <div>
+
+            </div>
+          </div>
+
           {/* Enroll CTA */}
           <div className="card bg-base-100 shadow-md">
             <div className="card-body p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">

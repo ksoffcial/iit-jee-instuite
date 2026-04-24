@@ -3,13 +3,13 @@ import { useForm, useFieldArray } from "react-hook-form";
 import axiosClient from '../utils/axisoClient';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { BookOpen, Calendar, Clock, User, Plus, Trash2, LayoutGrid } from 'lucide-react';
+import { BookOpen,IndianRupee , Calendar, Clock, User, Plus, Trash2, LayoutGrid } from 'lucide-react';
 
 // Updated Schema to include nested arrays
 const batchSchema = z.object({
     BatchName: z.string().min(3, "Batch name should be at least 3 characters"),
-    className: z.enum(["12th", "11th", "dropper", "jee", "neet"], { 
-        errorMap: () => ({ message: "Please select a valid class" }) 
+    className: z.enum(["12th", "11th", "dropper", "jee", "neet"], {
+        errorMap: () => ({ message: "Please select a valid class" })
     }),
     startDate: z.string().min(4, "Enter a valid start date"),
     description: z.string().min(10, "Description is too short"), // Reduced for testing
@@ -22,13 +22,18 @@ const batchSchema = z.object({
     subjects: z.array(z.object({
         subjectName: z.string().min(1, "Subject name required"),
         teacherName: z.string().min(1, "Teacher name required")
-    }))
+    })),
+    totalAmount:z.string().min(2,"Enter a valid Number"),
+    totalDiscount:z.string().min(2,"Enter a valid Number"),
+    finalPrice:z.string().min(2,"Enter a valid Number"),
+
 });
 
 const CreateBatch = () => {
     const {
         register,
         handleSubmit,
+        reset,
         control,
         formState: { errors, isSubmitting },
     } = useForm({
@@ -48,6 +53,7 @@ const CreateBatch = () => {
             const response = await axiosClient.post("/batch/create", data);
             console.log("Success:", response.data);
             alert("Batch Created Successfully!");
+            reset();
         } catch (error) {
             console.error("Error creating batch:", error);
         }
@@ -66,18 +72,18 @@ const CreateBatch = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="form-control">
                                 <label className="label font-semibold">Batch Name</label>
-                                <input 
-                                    type="text" 
-                                    className={`input input-bordered ${errors.BatchName ? 'input-error' : ''}`} 
-                                    placeholder="e.g. Alpha JEE 2026" 
-                                    {...register("BatchName")} 
+                                <input
+                                    type="text"
+                                    className={`input input-bordered ${errors.BatchName ? 'input-error' : ''}`}
+                                    placeholder="e.g. Alpha JEE 2026"
+                                    {...register("BatchName")}
                                 />
                                 {errors.BatchName && <span className="text-error text-sm mt-1">{errors.BatchName.message}</span>}
                             </div>
 
                             <div className="form-control">
                                 <label className="label font-semibold">Class/Category</label>
-                                <select 
+                                <select
                                     className={`select select-bordered ${errors.className ? 'select-error' : ''}`}
                                     {...register("className")}
                                 >
@@ -96,11 +102,11 @@ const CreateBatch = () => {
                             <div className="form-control">
                                 <label className="label font-semibold">Start Date</label>
                                 <div className="input-group">
-                                    <input 
-                                        type="text" 
-                                        placeholder="e.g. 15th April" 
+                                    <input
+                                        type="date"
+                                        placeholder="e.g. 15th April"
                                         className={`input input-bordered w-full ${errors.startDate ? 'input-error' : ''}`}
-                                        {...register("startDate")} 
+                                        {...register("startDate")}
                                     />
                                 </div>
                                 {errors.startDate && <span className="text-error text-sm mt-1">{errors.startDate.message}</span>}
@@ -108,11 +114,11 @@ const CreateBatch = () => {
 
                             <div className="form-control">
                                 <label className="label font-semibold">Course Duration</label>
-                                <input 
-                                    type="text" 
-                                    placeholder="e.g. 6 Months" 
+                                <input
+                                    type="text"
+                                    placeholder="e.g. 6 Months"
                                     className={`input input-bordered ${errors.timePeriods ? 'input-error' : ''}`}
-                                    {...register("timePeriods")} 
+                                    {...register("timePeriods")}
                                 />
                                 {errors.timePeriods && <span className="text-error text-sm mt-1">{errors.timePeriods.message}</span>}
                             </div>
@@ -120,7 +126,7 @@ const CreateBatch = () => {
 
                         <div className="form-control">
                             <label className="label font-semibold">Description</label>
-                            <textarea 
+                            <textarea
                                 className={`textarea textarea-bordered h-24 ${errors.description ? 'textarea-error' : ''}`}
                                 placeholder="Describe the batch objectives and curriculum..."
                                 {...register("description")}
@@ -133,26 +139,26 @@ const CreateBatch = () => {
                         {/* Dynamic Schedule Section */}
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
-                                <h3 className="font-bold flex items-center gap-2"><Clock size={18}/> Class Timings</h3>
+                                <h3 className="font-bold flex items-center gap-2"><Clock size={18} /> Class Timings</h3>
                                 <button type="button" onClick={() => appendTime({ subject: "", subTime: "" })} className="btn btn-ghost btn-sm text-primary">
-                                    <Plus size={16}/> Add Time
+                                    <Plus size={16} /> Add Time
                                 </button>
                             </div>
                             {timeFields.map((field, index) => (
                                 <div key={field.id} className="flex gap-2 items-start">
-                                    <input 
-                                        className="input input-sm input-bordered flex-1" 
-                                        placeholder="Subject" 
-                                        {...register(`time.${index}.subject`)} 
+                                    <input
+                                        className="input input-sm input-bordered flex-1"
+                                        placeholder="Subject"
+                                        {...register(`time.${index}.subject`)}
                                     />
-                                    <input 
-                                        className="input input-sm input-bordered flex-1" 
-                                        placeholder="Time (e.g. 10 AM)" 
-                                        {...register(`time.${index}.subTime`)} 
+                                    <input
+                                        className="input input-sm input-bordered flex-1"
+                                        placeholder="Time (e.g. 10 AM)"
+                                        {...register(`time.${index}.subTime`)}
                                     />
                                     {index > 0 && (
                                         <button type="button" onClick={() => removeTime(index)} className="btn btn-sm btn-error btn-outline btn-square">
-                                            <Trash2 size={16}/>
+                                            <Trash2 size={16} />
                                         </button>
                                     )}
                                 </div>
@@ -162,35 +168,80 @@ const CreateBatch = () => {
                         {/* Dynamic Faculty Section */}
                         <div className="space-y-4">
                             <div className="flex justify-between items-center">
-                                <h3 className="font-bold flex items-center gap-2"><User size={18}/> Assigned Faculty</h3>
+                                <h3 className="font-bold flex items-center gap-2"><User size={18} /> Assigned Faculty</h3>
                                 <button type="button" onClick={() => appendSubject({ subjectName: "", teacherName: "" })} className="btn btn-ghost btn-sm text-primary">
-                                    <Plus size={16}/> Add Teacher
+                                    <Plus size={16} /> Add Teacher
                                 </button>
                             </div>
                             {subjectFields.map((field, index) => (
                                 <div key={field.id} className="flex gap-2 items-start">
-                                    <input 
-                                        className="input input-sm input-bordered flex-1" 
-                                        placeholder="Subject Name" 
-                                        {...register(`subjects.${index}.subjectName`)} 
+                                    <input
+                                        className="input input-sm input-bordered flex-1"
+                                        placeholder="Subject Name"
+                                        {...register(`subjects.${index}.subjectName`)}
                                     />
-                                    <input 
-                                        className="input input-sm input-bordered flex-1" 
-                                        placeholder="Teacher Name" 
-                                        {...register(`subjects.${index}.teacherName`)} 
+                                    <input
+                                        className="input input-sm input-bordered flex-1"
+                                        placeholder="Teacher Name"
+                                        {...register(`subjects.${index}.teacherName`)}
                                     />
                                     {index > 0 && (
                                         <button type="button" onClick={() => removeSubject(index)} className="btn btn-sm btn-error btn-outline btn-square">
-                                            <Trash2 size={16}/>
+                                            <Trash2 size={16} />
                                         </button>
                                     )}
                                 </div>
                             ))}
                         </div>
 
+                        <div>
+                            <h2 className='font-bold flex items-center gap-2 mb-4'><IndianRupee size={18} /> Price section </h2>
+
+
+                            <div className='grid grid-cols-2 md:grid-cols-3 gap-6'>
+
+                                <div className="form-control">
+                                    <label className="label font-semibold">Total Amount</label>
+                                    <input
+                                        type="text"
+                                        placeholder="₹ 500000"
+                                        className={`input input-bordered ${errors.totalAmount ? 'input-error' : ''}`}
+                                        {...register("totalAmount")}
+                                    />
+                                    {errors.totalAmount && <span className="text-error text-sm mt-1">{errors.totalAmount.message}</span>}
+                                </div>
+
+
+                                <div className="form-control">
+                                    <label className="label font-semibold">Total Discount</label>
+                                    <input
+                                        type="text"
+                                        placeholder=" ₹ 5000"
+                                        className={`input input-bordered ${errors.totalDiscount ? 'input-error' : ''}`}
+                                        {...register("totalDiscount")}
+                                    />
+                                    {errors.totalDiscount && <span className="text-error text-sm mt-1">{errors.totalDiscount.message}</span>}
+                                </div>
+
+
+                                <div className="form-control">
+                                    <label className="label font-semibold">Final Price</label>
+                                    <input
+                                        type="text"
+                                        placeholder="₹ 5000"
+                                        className={`input input-bordered ${errors.finalPrice ? 'input-error' : ''}`}
+                                        {...register("finalPrice")}
+                                    />
+                                    {errors.finalPrice && <span className="text-error text-sm mt-1">{errors.finalPrice.message}</span>}
+                                </div>
+
+                            </div>
+
+                        </div>
+
                         <div className="card-actions justify-end mt-8">
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 className={`btn btn-primary btn-block md:w-auto ${isSubmitting ? 'loading' : ''}`}
                                 disabled={isSubmitting}
                             >

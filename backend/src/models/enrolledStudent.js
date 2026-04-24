@@ -16,6 +16,11 @@ const enrolledSchema = new Schema({
         enum: ["pending", "paid"],
         default: "pending"
     },
+    paymentAmount:{
+        type:Number,
+        required:true,
+        default:0
+    },
     enrolledAt: {
         type: Date,
         default: Date.now

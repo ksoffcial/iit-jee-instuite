@@ -5,13 +5,15 @@ const { batchValidator } = require("../utils/validate");
 const createBatch = async (req, res) => {
     try {
         const data = req.body;
+        console.log("data",req.body)
         batchValidator(data)
+        console.log("api hitted 1")
         const dataAdded = await Batch.create(data);
-
+        console.log("api hitted 2")
         res.send("batch created sucessfullly ")
     }
     catch (err) {
-        res.send("Error  Batch creation " + err.message);
+        res.send("Error Batch creation " + err.message);
     }
 }
 
