@@ -5,11 +5,8 @@ const { batchValidator } = require("../utils/validate");
 const createBatch = async (req, res) => {
     try {
         const data = req.body;
-        console.log("data",req.body)
         batchValidator(data)
-        console.log("api hitted 1")
         const dataAdded = await Batch.create(data);
-        console.log("api hitted 2")
         res.send("batch created sucessfullly ")
     }
     catch (err) {
@@ -19,9 +16,7 @@ const createBatch = async (req, res) => {
 
 const getAllBatch = async (req, res) => {
     try {
-        const batchData = await Batch.find().select("_id BatchName className timePeriods startDate time subjects description");
-        // console.log(batchData)
-
+        const batchData = await Batch.find().select("_id BatchName className timePeriods startDate time subjects createAt description");
         res.status(200).send(batchData);
     }
     catch (err) {
@@ -59,7 +54,7 @@ const batchById = async (req, res) => {
             return res.status(404).send("Id is not defined ")
         }
         const batchData = await Batch.findById(id);
-        if(!batchData){
+        if (!batchData) {
             return res.status(404).send("batch does not exist ")
         }
 

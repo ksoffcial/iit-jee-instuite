@@ -25,7 +25,7 @@ const enrolledSchema = new Schema({
         type: Date,
         default: Date.now
     }
-})
+},{timestamps:true})
 
 const Enrollement = mongoose.model('enrolled', enrolledSchema)
 

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axiosClient from '../utils/axisoClient';
-import { 
-  Users, 
-  IndianRupee, 
-  UserX, 
-  Mail, 
-  Phone, 
-  BookOpen, 
+import {
+  Users,
+  IndianRupee,
+  UserX,
+  Mail,
+  Phone,
+  Calendar,
+  Clock,
+  BookOpen,
   Search,
   IdCard,
   CreditCard
@@ -34,7 +36,7 @@ const TotalEnrollment = () => {
     fetchData();
   }, []);
 
-  const filteredData = result.data?.filter(item => 
+  const filteredData = result.data?.filter(item =>
     item.userId?.fullName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.userId?.rollNo?.toString().includes(searchTerm)
   );
@@ -65,9 +67,9 @@ const TotalEnrollment = () => {
           <h2 className="text-xl font-bold">Student Management</h2>
           <div className="relative w-full md:w-80">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 opacity-40" size={18} />
-            <input 
-              type="text" 
-              placeholder="Search student or roll no..." 
+            <input
+              type="text"
+              placeholder="Search student or roll no..."
               className="input input-bordered w-full pl-10 h-10"
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -82,7 +84,9 @@ const TotalEnrollment = () => {
                 <th className="rounded-none">Student Details</th>
                 <th>Batch Information</th>
                 <th>Payment Status</th>
+
                 <th>Contact</th>
+                <th>Time and data</th>
                 <th className="text-center">Action</th>
               </tr>
             </thead>
@@ -112,7 +116,7 @@ const TotalEnrollment = () => {
                   <td>
                     <div className="flex flex-col">
                       <span className="text-sm font-semibold flex items-center gap-2">
-                        <BookOpen size={14} className="text-primary"/> {item.courseId?.BatchName}
+                        <BookOpen size={14} className="text-primary" /> {item.courseId?.BatchName}
                       </span>
                       <span className="text-[10px] opacity-50 uppercase font-bold mt-1">Academic Year 2026</span>
                     </div>
@@ -122,7 +126,7 @@ const TotalEnrollment = () => {
                   <td>
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-1 font-bold text-success">
-                         <CreditCard size={14} /> ₹{item.paymentAmount}
+                        <CreditCard size={14} /> ₹{item.paymentAmount}
                       </div>
                       <span className={`badge badge-sm font-bold ${item.paymentStatus === 'Paid' ? 'badge-success' : 'badge-warning'}`}>
                         {item.paymentStatus}
@@ -142,6 +146,27 @@ const TotalEnrollment = () => {
                     </div>
                   </td>
 
+                  {/* for date and time */}
+                  <td>
+                    <div className="flex flex-col gap-1 text-sm">
+                      <div className="flex items-center gap-2 opacity-80">
+                        <Calendar size={14} className="text-info" /> Date of admission
+                      </div>
+                      <div className="flex items-center gap-2 opacity-80">
+                        <Clock size={14} className="text-primary" /> {new Date(item.enrolledAt).toLocaleString('en-IN', {
+                          day: '2-digit',
+                          month: 'short',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                          hour12: true
+                        })}
+                      </div>
+                    </div>
+                  </td>
+
+
+
                   {/* Actions */}
                   <td className="text-center">
                     <button className='btn btn-warning'>
@@ -153,7 +178,7 @@ const TotalEnrollment = () => {
             </tbody>
           </table>
         </div>
-        
+
         {/* Footer info */}
         {!loading && (
           <div className="p-4 bg-base-300/30 text-center text-xs opacity-50 font-medium">

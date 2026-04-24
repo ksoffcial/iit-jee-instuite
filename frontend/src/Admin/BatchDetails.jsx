@@ -58,7 +58,7 @@ const BatchDetails = () => {
                     </h1>
                     <p className="text-base-content/60">Manage enrollment dates and class schedules</p>
                 </div>
-                <button onClick={()=>navigate("/admin/createBatch")} className="btn btn-primary gap-2">
+                <button onClick={() => navigate("/admin/createBatch")} className="btn btn-primary gap-2">
                     <Plus size={20} /> New Batch
                 </button>
             </div>
@@ -88,7 +88,7 @@ const BatchDetails = () => {
                                         </div>
                                         <div>
                                             <p className="text-xs uppercase opacity-50 font-bold">Start Date</p>
-                                            <p className="font-semibold">{data.startDate}</p>
+                                            <p className="font-semibold">{new Date(data.startDate).toLocaleDateString()}</p>
                                         </div>
                                     </div>
 
@@ -113,11 +113,21 @@ const BatchDetails = () => {
                                             <p className="font-semibold">{data.className}</p>
                                         </div>
                                     </div>
+
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-2 bg-base-200 rounded-lg">
+                                            <Clock size={20} className="text-accent" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs uppercase opacity-50 font-bold">Batch Created Date and time</p>
+                                            <p className="font-semibold"> {new Date(data.createAt).toLocaleString()} </p>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="card-actions justify-end mt-6 pt-4 border-t border-base-200">
-                                    <button 
-                                        onClick={() => handleToDelete(data._id)} 
+                                    <button
+                                        onClick={() => handleToDelete(data._id)}
                                         className="btn btn-ghost btn-sm text-error gap-2 hover:bg-error/10"
                                     >
                                         <Trash2 size={16} />

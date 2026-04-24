@@ -53,17 +53,21 @@ const batchSchema = new Schema({
         type: String,
         required: true
     },
-    totalAmount:{
-        type:String,
-        required:true
+    totalAmount: {
+        type: String,
+        required: true
     },
-    totalDiscount:{
-        type:String,
-        required:true
+    totalDiscount: {
+        type: String,
+        required: true
     },
-    finalPrice:{ 
-        type:String,
-        required:true,
+    finalPrice: {
+        type: String,
+        required: true,
+    },
+    createAt: {
+        type: Date,
+        default: Date.now
     }
 
 }, { timestamps: true })
