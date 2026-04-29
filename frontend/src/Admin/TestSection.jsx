@@ -41,25 +41,9 @@ const TestSection = () => {
             buttonText: 'Manage Deletion'
         },
         {
-            id: 4,
-            name: "JEE Main & Adv",
-            route: "/test/jee",
-            icon: <Atom className="w-8 h-8 text-info" />,
-            desc: 'Physics, Chemistry, and Math focused engineering entrance tests.',
-            buttonText: 'View Tests'
-        },
-        {
-            id: 5,
-            name: "NEET UG",
-            route: "/test/neet",
-            icon: <Stethoscope className="w-8 h-8 text-secondary" />,
-            desc: 'Biology-centric medical entrance exams and practice sets.',
-            buttonText: 'View Tests'
-        },
-        {
             id: 6,
             name: "Results & Analytics",
-            route: "/test/result",
+            route: "/admin/testResult",
             icon: <BarChart className="w-8 h-8 text-success" />,
             desc: 'Check student performance and detailed score analytics.',
             buttonText: 'View Results'

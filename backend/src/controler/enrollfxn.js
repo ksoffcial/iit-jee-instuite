@@ -30,7 +30,7 @@ const enrollNow = async (req, res) => {
             paymentStatus: "paid",
             paymentAmount: courseFee
         })
-        if(!enrolStudent){
+        if (!enrolStudent) {
             return res.status(400).send("Error in the enrolstundent");
         }
         res.status(200).send("You Are enrolled sucessfully ");
@@ -70,21 +70,23 @@ const courseEnrollment = async (req, res) => {
     try {
         const { id } = req.params;
 
+
         if (!id) {
             return res.status(404).send("Id is not valid ");
         }
+
 
         const batchData = await Enrollement.find({ courseId: id }).populate({ path: 'userId', select: "fullName emailId phoneNumber" });
 
         if (!batchData) {
             return res.status(404).send("Id does not exist ");
         }
-
         const totalAmount = batchData.reduce((total, curr) => {
             return total + (curr.paymentAmount || 0);
         }, 0);
 
-        const totalStudent = allData.length;
+        const totalStudent = batchData.length;
+
         res.status(200).json({
             data: batchData,
             totalcollection: totalAmount,
@@ -132,4 +134,4 @@ const totalEnrollment = async (req, res) => {
 
 
 
-module.exports = { enrollNow, studenEnrollment, totalEnrollment, courseEnrollment }
+module.exports = { enrollNow, studenEnrollment, totalEnrollment, courseEnrollment };

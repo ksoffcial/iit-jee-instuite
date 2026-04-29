@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Users, UserPlus,Search, FileText, FolderPlus, ArrowRight} from 'lucide-react';
+import { Users, UserPlus,Search, FileText, FolderPlus,Plus ,User,Info  , ArrowRight} from 'lucide-react';
 
 const AdminPanel = () => {
     const navigate = useNavigate();
@@ -38,14 +38,14 @@ const AdminPanel = () => {
             id: 4,
             name: " Batch Details",
             route: "/admin/batchDetails",
-            icon: <FolderPlus className="text-info" size={24} />,
+            icon: <Info  className="text-info" size={24} />,
             desc: "Organize students into specific academic batches."
         },
         {
             id:5,
             name:'Mentor Details',
             route:'/admin/mentor',
-            icon: <FolderPlus className="text-info" size={24} />,
+            icon: <User  className="text-info" size={24} />,
             desc:"This section is use to add mentor and delete"
         },
         {
@@ -59,7 +59,7 @@ const AdminPanel = () => {
             id:7,
             name:'Enrollment Details',
             route:'/admin/enrollment',
-            icon:  <Search size={24} className="text-accent" />,
+            icon:  <Plus  size={24} className="text-accent" />,
             desc:"This section is used to track the enrollment details of the student"
         }
     ];

@@ -94,7 +94,6 @@ const loginUser = async (req, res) => {
 
     }
     catch (err) {
-        console.log("error :- " + err.message)
         res.status(500).send('some error occured in login :- ' + err.message)
     }
 }

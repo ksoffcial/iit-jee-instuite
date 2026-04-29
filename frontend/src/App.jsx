@@ -32,6 +32,8 @@ import UserProfile from './Pages/UserProfile'
 import EnrollmentDetails from './Admin/EnrollmentDetails'
 import EnrollmentBatch from './Admin/EnrollmentBatch'
 import TotalEnrollment from './Admin/TotalEnrollment'
+import TestResult from './Admin/TestResult'
+import AttemptTest from './Home/AttemptTest '
 
 
 
@@ -72,9 +74,10 @@ const App = () => {
         <Route path='/admin/createBatch' element={isAuthenticated && user.role == 'admin' ? <CreateBatch /> : <Navigate to='/' />} />
         <Route path='/admin/createAdmin' element={isAuthenticated && user.role == 'admin' ? <MakeAdmin /> : <Navigate to='/' />} />
         <Route path='/admin/createTest' element={isAuthenticated && user.role == 'admin' ? <TestSection /> : <Navigate to='/' />} />
+        <Route path='/admin/testResult' element={isAuthenticated && user.role == 'admin' ? <TestResult /> : <Navigate to='/' />} />
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
-        <Route path='/test/attempt/:id' element={<TestPanel />} />
+        <Route path='/test/attempt/:id' element={<AttemptTest />} />
         <Route path='/doubt' element={isAuthenticated ? <AiChat /> : <Login />} />
         <Route path='/admin/mentor' element={isAuthenticated && user.role == "admin" ? <Mentordetails /> : <Navigate to="/" />} />
         <Route path='/mentor/deletementor' element={isAuthenticated && user.role == "admin" ? <GetMentor /> : <Navigate to="/" />} />
@@ -86,6 +89,7 @@ const App = () => {
         <Route path='/query' element={<Userquery />} />
         <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage /> : <Navigate to="/login" />} />
         <Route path='/user/myprofile' element={isAuthenticated ? <UserProfile/>:<Navigate to="/login"/>}/>
+        <Route path='/attamp/test' element={<AttemptTest/>}/>
       </Routes>
     </div>
   )
