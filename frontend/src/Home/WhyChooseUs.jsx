@@ -5,10 +5,10 @@ import {
 } from 'lucide-react'
 
 const stats = [
-  { value: '15K+', label: 'Students Enrolled' },
+  { value: '2000+', label: 'Students Enrolled' },
   { value: '98%', label: 'Success Rate' },
-  { value: '200+', label: 'Expert Faculty' },
-  { value: '12+', label: 'Years of Excellence' },
+  { value: '15+', label: 'Expert Faculty' },
+  { value: '22+', label: 'Years of Excellence' },
 ]
 
 const features = [
@@ -37,7 +37,7 @@ const features = [
     color: 'from-emerald-500 to-teal-500',
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/20',
-    tag: 'Updated 2024'
+    tag: 'Updated 2026'
   },
   {
     icon: Clock,

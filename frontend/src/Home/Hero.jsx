@@ -18,9 +18,9 @@ import { useNavigate } from "react-router";
 
 const stats = [
   { icon: Trophy, label: "IIT Selections", value: "2,400+", color: "text-yellow-400" },
-  { icon: Users, label: "Students Enrolled", value: "15,000+", color: "text-blue-400" },
+  { icon: Users, label: "Board Slected", value: "200,000+", color: "text-yellow-400" },
+  { icon: Trophy, label: "Students Enrolled", value: "15,000+", color: "text-blue-400" },
   { icon: Target, label: "NEET Qualifiers", value: "3,800+", color: "text-green-400" },
-  { icon: Star, label: "Years of Excellence", value: "18+", color: "text-purple-400" },
 ];
 
 const floatingBadges = [
@@ -207,7 +207,7 @@ export default function Hero() {
         </div>
 
         {/* Stats Row */}
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4  gap-4">
           {stats.map(({ icon: Icon, label, value, color }, i) => (
             <div
               key={label}

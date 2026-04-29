@@ -137,9 +137,9 @@ const toppers = [
 ]
 
 const achievements = [
-  { icon: Crown, value: '5,200+', label: 'Total Selections', color: 'text-amber-400', bg: 'bg-amber-400/10' },
-  { icon: Target, value: '847', label: 'IIT Selections (2024)', color: 'text-blue-400', bg: 'bg-blue-400/10' },
-  { icon: Flame, value: '1,230', label: 'NEET Qualifiers', color: 'text-rose-400', bg: 'bg-rose-400/10' },
+  { icon: Crown, value: '200,000+', label: 'Total Selections', color: 'text-amber-400', bg: 'bg-amber-400/10' },
+  { icon: Target, value: '2500', label: 'IIT Selections (2024)', color: 'text-blue-400', bg: 'bg-blue-400/10' },
+  { icon: Flame, value: '3000', label: 'NEET Qualifiers', color: 'text-rose-400', bg: 'bg-rose-400/10' },
   { icon: TrendingUp, value: '98%', label: 'Pass Rate', color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
 ]
 
@@ -329,9 +329,9 @@ const StudentResults = () => {
             </div>
             <div className="flex items-center justify-center gap-4 sm:gap-6 mt-6 flex-wrap">
               {[
-                { icon: BadgeCheck, text: '5,200+ total selections' },
-                { icon: Star, text: 'Ranked #1 in Bihar' },
-                { icon: Award, text: '12 years of excellence' },
+                { icon: BadgeCheck, text: '200K+ total selections' },
+                { icon: Star, text: 'Ranked #1 in North Bihar' },
+                { icon: Award, text: '22 years of excellence' },
               ].map(({ icon: Icon, text }, i) => (
                 <div key={i} className="flex items-center gap-1.5 text-slate-400 text-xs">
                   <Icon size={13} className="text-amber-400" />

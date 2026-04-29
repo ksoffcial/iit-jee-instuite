@@ -22,7 +22,7 @@ const TestData = () => {
         const fetchData = async () => {
             try {
                 const response = await axiosClient.get("/test/getAllTest");
-                setTestData(response.data);
+                setTestData(response.data.test);
             } catch (error) {
                 console.error("Fetch Error:", error);
             } finally {

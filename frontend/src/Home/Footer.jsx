@@ -34,7 +34,7 @@ const contactInfo = [
     {
         icon: Phone,
         label: 'Call Us',
-        value: '+91 98765 43210\n+91 91234 56789',
+        value: '+91 62039 81174\n+91 92292 97418',
         color: 'text-emerald-400',
         bg: 'bg-emerald-400/10',
     },
@@ -125,7 +125,7 @@ const Footer = () => {
 
                             {/* Trust badges */}
                             <div className="flex flex-wrap gap-2 mb-6">
-                                {['#1 in Purnea', 'Est. 2012', '5200+ Selections'].map((b, i) => (
+                                {['#1 in Purnea', 'Est. 2002', '200K+ Selections'].map((b, i) => (
                                     <span key={i} className="text-xs font-semibold bg-blue-500/15 border border-blue-400/25 text-blue-300 px-3 py-1 rounded-full">
                                         {b}
                                     </span>

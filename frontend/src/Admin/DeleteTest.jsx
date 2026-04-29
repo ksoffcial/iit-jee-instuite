@@ -24,7 +24,7 @@ const DeleteTest = () => {
             setLoading(true);
             const response = await axiosClient.get("/test/getAllTest");
             // Assuming the array is in response.data or response.data.tests
-            setTestData(Array.isArray(response.data) ? response.data : []);
+            setTestData(Array.isArray(response.data.test) ? response.data.test : []);
         } catch (error) {
             console.error("Fetch error:", error);
         } finally {
