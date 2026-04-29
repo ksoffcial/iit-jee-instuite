@@ -29,7 +29,17 @@ const deleteTest = async (req, res) => {
 const getAllTest = async (req, res) => {
     try {
         const testData = await Test.find();
-        res.status(200).send(testData)
+        
+        if(!testData){
+            res.status(200).json({
+                message:"Data does not found 👀"
+            })
+        }
+
+        res.status(200).json({
+            test:testData,
+            message:"Data fetch sucessfully ✔"
+        })
 
     }
     catch (err) {
@@ -40,12 +50,25 @@ const getAllTest = async (req, res) => {
 const getById = async (req, res) => {
     try {
         const { id } = req.params;
-
+        const now = new Date();
         if (!id) {
             return res.status(500).send("error in getById" + err.message)
         }
 
         const testData = await Test.findById(id);
+
+        if (testData.scheduleType === "fixed" && now < testData.startTime) {
+            return res.status(201).json({
+                message: `Test not Start yet, Test will be start at ${testData.startTime.toLocaleString()}`,
+            });
+        }
+
+        if (testData.scheduleType === "fixed" && now > testData.endTime) {
+            return res.status(200).json({
+                message: "Test submission time is over",
+            });
+        }
+
         res.status(200).send(testData)
     }
     catch (err) {
@@ -177,7 +200,7 @@ const submitTest = async (req, res) => {
 const getSudentAllResult = async (req, res) => {
     try {
         const userId = req.result._id;
-            
+
         if (!userId) {
             return res.status(404).json({
                 message: "User id is not defined",
@@ -210,7 +233,7 @@ const testWiseResult = async (req, res) => {
         const { id } = req.params;
         const userId = req.result._id;
 
-        const testResult = await Attempt.find({ testId: id }).select('totalMarks obtainedMarks startedAt submittedAt').populate({path:'userId', select:'fullName emailId phoneNumber'})
+        const testResult = await Attempt.find({ testId: id }).select('totalMarks obtainedMarks startedAt submittedAt').populate({ path: 'userId', select: 'fullName emailId phoneNumber' })
 
         if (!testResult) {
             return res.status(404).json({
@@ -320,4 +343,4 @@ const getStudentResult = async (req, res) => {
 
 
 
-module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult,getSudentAllResult,testWiseResult};
+module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult };

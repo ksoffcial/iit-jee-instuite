@@ -34,6 +34,7 @@ import EnrollmentBatch from './Admin/EnrollmentBatch'
 import TotalEnrollment from './Admin/TotalEnrollment'
 import TestResult from './Admin/TestResult'
 import AttemptTest from './Home/AttemptTest '
+import Result from './Admin/Result'
 
 
 
@@ -75,6 +76,7 @@ const App = () => {
         <Route path='/admin/createAdmin' element={isAuthenticated && user.role == 'admin' ? <MakeAdmin /> : <Navigate to='/' />} />
         <Route path='/admin/createTest' element={isAuthenticated && user.role == 'admin' ? <TestSection /> : <Navigate to='/' />} />
         <Route path='/admin/testResult' element={isAuthenticated && user.role == 'admin' ? <TestResult /> : <Navigate to='/' />} />
+        <Route path='/admin/result/:id' element={isAuthenticated && user.role == 'admin' ? <Result /> : <Navigate to='/' />} />
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
         <Route path='/test/attempt/:id' element={<AttemptTest />} />

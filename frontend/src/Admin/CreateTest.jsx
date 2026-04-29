@@ -66,6 +66,7 @@ const CreateTest = () => {
     control,
     formState: { errors, isSubmitting },
     watch,
+    reset
   } = useForm({
     resolver: zodResolver(testSchema),
     defaultValues: {
@@ -123,6 +124,7 @@ const CreateTest = () => {
 
       console.log("Success:", response.data);
       alert("Test Created Successfully!");
+      reset();
     } catch (error) {
       console.error("Error creating test:", error);
       alert(error?.response?.data?.message || "Something went wrong");
