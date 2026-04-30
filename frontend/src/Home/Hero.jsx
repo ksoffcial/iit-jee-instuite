@@ -87,28 +87,8 @@ export default function Hero() {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-3xl" />
 
-      {/* Navbar */}
-      <nav className="relative z-20 border-b border-white/5 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-              <GraduationCap size={20} className="text-white" />
-            </div>
-            <span className="text-white font-bold text-lg tracking-tight">
-              Apex<span className="text-gradient">IIT</span>
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-8 text-sm text-gray-400">
-            {["Courses", "Results", "Faculty", "Test Series", "About"].map((item) => (
-              <a key={item} href="#" className="hover:text-white transition-colors duration-200">{item}</a>
-            ))}
-          </div>
-          <button className="btn btn-sm bg-blue-600 hover:bg-blue-500 text-white border-0 rounded-xl btn-glow transition-all duration-300">
-            Enroll Now
-          </button>
-        </div>
-      </nav>
-
+     
+    
       {/* Hero Main */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 lg:pt-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -118,7 +98,7 @@ export default function Hero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-sm">
               <Zap size={14} className="text-yellow-400" />
-              <span>India's #1 IIT JEE & NEET Coaching Institute</span>
+              <span>India's #1  JEE & NEET Coaching Institute</span>
             </div>
 
             {/* Headline */}

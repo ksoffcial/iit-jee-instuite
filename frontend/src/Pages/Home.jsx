@@ -14,7 +14,6 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <h1 className='text-7xl font-bold bg-white mt-40'>some updated testing </h1>
       <Hero />
       <div className='hidden md:block'>
         <Courses />
