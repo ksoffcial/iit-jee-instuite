@@ -53,7 +53,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050a18] relative overflow-hidden font-sans">
+    <div className="min-h-screen mt-12 bg-[#050a18] relative overflow-hidden font-sans">
       {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Noto+Sans+Devanagari:wght@400;600&display=swap');

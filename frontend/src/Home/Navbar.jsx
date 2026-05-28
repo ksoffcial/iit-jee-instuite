@@ -149,13 +149,13 @@ const Navbar = () => {
           <div className="topbar-track flex whitespace-nowrap">
             {[...Array(2)].map((_, i) => (
               <span key={i} className="flex items-center gap-8 px-4 text-xs font-semibold tracking-wide">
-                <span className="flex items-center gap-1.5">🎯 JEE 2026 Batch Open — Limited Seats!</span>
+                <span className="flex items-center gap-1.5">🎯 2026-2027 Batch Open — Limited Seats!</span>
                 <span className="opacity-40">•</span>
-                <span className="flex items-center gap-1.5">🏆 NEET 2025: 92 Students in Top 1000 AIR</span>
+                <span className="flex items-center gap-1.5">🏆 One of the best instuite in bihar</span>
                 <span className="opacity-40">•</span>
-                <span className="flex items-center gap-1.5">📚 Free Demo Class Every Saturday 10AM</span>
+                <span className="flex items-center gap-1.5">📚 10 days free demo classes</span>
                 <span className="opacity-40">•</span>
-                <span className="flex items-center gap-1.5">📞 Call: +91-98765-43210 for Counselling</span>
+                <span className="flex items-center gap-1.5">📞 Call: +91-6203981174 for Counselling</span>
                 <span className="opacity-40">•</span>
               </span>
             ))}
