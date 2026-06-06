@@ -83,8 +83,8 @@ const Userquery = () => {
         try {
             const response = await axiosClient.post("/query/create", data)
             // console.log(response.data)
-            alert("query generated sucessfully")
             reset();
+            alert("query generated sucessfully")
             navigate("/")
 
         } catch (err) { 
