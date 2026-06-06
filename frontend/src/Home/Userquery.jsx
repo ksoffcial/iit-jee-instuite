@@ -7,6 +7,7 @@ import {
     User, Phone, MapPin, BookOpen,
     Layers, Activity, MessageSquare, Send, AlertCircle
 } from 'lucide-react'
+import { useNavigate } from 'react-router';
 
 // ─── Validation Schema ───────────────────────────────────────────────────────
 
@@ -75,13 +76,17 @@ const Userquery = () => {
         formState: { errors, isSubmitting },
     } = useForm({ resolver: zodResolver(querySchema) })
 
+    const navigate = useNavigate();
+
     const onSubmit = async (data) => {
         console.log(data)
         try {
             const response = await axiosClient.post("/query/create", data)
-            console.log(response.data)
+            // console.log(response.data)
             alert("query generated sucessfully")
             reset();
+            navigate("/")
+
         } catch (err) { 
             console.error("Submission failed:", err.message)
         }
