@@ -10,7 +10,7 @@ import {
 const courses = [
   {
     id: 1,
-    courseImg: "https://i.pinimg.com/1200x/88/53/a0/8853a0d8dbb2edaae9d415ac20884c7e.jpg",
+    courseImg:"https://images.unsplash.com/photo-1573167243872-43c6433b9d40?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JvdXAlMjBvZiUyMGVuZ2luZWVyfGVufDB8fDB8fHww  ",
     courseName: "IIT-JEE",
     description: "Preparation course for IIT-JEE engineering entrance exam with expert faculty.",
     icon: BookOpen,
@@ -24,7 +24,7 @@ const courses = [
   },
   {
     id: 2,
-    courseImg: "https://i.pinimg.com/1200x/c9/ca/c3/c9cac36fdecc2403d2984f6603bbd670.jpg",
+    courseImg:"https://images.unsplash.com/photo-1778230123972-07eafe417fc4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yJTIwZ3JvdXBzfGVufDB8fDB8fHww",
     courseName: "NEET",
     description: "Preparation course for NEET medical entrance exam with top doctors as mentors.",
     icon: FlaskConical,
@@ -38,7 +38,6 @@ const courses = [
   },
   {
     id: 3,
-    courseImg: "https://i.pinimg.com/1200x/88/53/a0/8853a0d8dbb2edaae9d415ac20884c7e.jpg",
     courseName: "11th Foundation",
     description: "Foundation course for Class 11 students to build strong conceptual basics.",
     icon: Layers,
@@ -52,7 +51,6 @@ const courses = [
   },
   {
     id: 4,
-    courseImg: "https://i.pinimg.com/1200x/88/53/a0/8853a0d8dbb2edaae9d415ac20884c7e.jpg",
     courseName: "12th Foundation",
     description: "Foundation course for Class 12 students focusing on board and competitive exams.",
     icon: GraduationCap,
@@ -66,8 +64,8 @@ const courses = [
   },
   {
     id: 5,
-    courseImg: "https://i.pinimg.com/1200x/88/53/a0/8853a0d8dbb2edaae9d415ac20884c7e.jpg",
     courseName: "BSEB Board",
+    courseImg:"https://images.unsplash.com/photo-1764720572799-9b441b6cdfbe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGJvYXJkJTIwZXhhbSUyMHN0dWRlbnR8ZW58MHx8MHx8fDA%3D",
     description: "Course designed for Bihar School Examination Board students with local focus.",
     icon: School,
     badge: "Bihar Special",
@@ -75,13 +73,12 @@ const courses = [
     students: "8,200+",
     duration: "1 Year",
     rating: 4.6,
-    tag: "Board",
     tagStyle: "bg-yellow-100 text-yellow-700",
   },
   {
     id: 6,
-    courseImg: "https://i.pinimg.com/1200x/88/53/a0/8853a0d8dbb2edaae9d415ac20884c7e.jpg",
     courseName: "CBSE Board",
+    courseImg:"https://plus.unsplash.com/premium_photo-1683887033886-6c45d4b659f3?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHN0dWRlbnRzJTIwaW4lMjBjbGFzc3Jvb218ZW58MHx8MHx8fDA%3D",
     description: "Comprehensive course for Central Board of Secondary Education students.",
     icon: BookMarked,
     badge: "National",
@@ -94,7 +91,6 @@ const courses = [
   },
   {
     id: 7,
-    courseImg: "https://i.pinimg.com/1200x/88/53/a0/8853a0d8dbb2edaae9d415ac20884c7e.jpg",
     courseName: "Dropper Batch",
     description: "Intensive batch for students repeating a year — focused, fast, and effective.",
     icon: RefreshCw,
@@ -137,7 +133,7 @@ const CourseCard = ({ course, isWishlisted, onWishlist, onView }) => {
         <button
           onClick={() => onWishlist(course.id)}
           className={`absolute top-3 right-3 p-1.5 rounded-full shadow transition-all duration-200
-            ${isWishlisted
+${isWishlisted
               ? "bg-red-500 text-white"
               : "bg-white/90 text-gray-500 hover:bg-red-50 hover:text-red-500"
             }`}
@@ -188,8 +184,8 @@ const CourseCard = ({ course, isWishlisted, onWishlist, onView }) => {
         <button
           onClick={() => onView(course)}
           className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl
-                     bg-gray-950 hover:bg-blue-600 text-white text-sm font-semibold
-                     transition-colors duration-300"
+bg-gray-950 hover:bg-blue-600 text-white text-sm font-semibold
+transition-colors duration-300"
         >
           View Details
           <ChevronRight size={15} />
@@ -227,7 +223,7 @@ const CourseModal = ({ course, onClose }) => {
           <button
             onClick={onClose}
             className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20
-                       text-white flex items-center justify-center transition"
+text-white flex items-center justify-center transition"
           >
             <X size={16} />
           </button>
@@ -257,7 +253,7 @@ const CourseModal = ({ course, onClose }) => {
             {[
               { label: "Students", value: course.students, icon: Users },
               { label: "Duration", value: course.duration, icon: Clock },
-              { label: "Rating",   value: `⭐ ${course.rating}`, icon: Star },
+              { label: "Rating", value: `⭐ ${course.rating}`, icon: Star },
             ].map(({ label, value, icon: Ic }) => (
               <div key={label} className="bg-gray-50 border border-gray-100 rounded-xl p-3">
                 <Ic size={14} className="text-blue-500 mx-auto mb-1" />
@@ -269,7 +265,7 @@ const CourseModal = ({ course, onClose }) => {
 
           {/* Enroll Button */}
           <button className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700
-                             text-white font-bold text-sm transition-colors">
+text-white font-bold text-sm transition-colors">
             Enroll Now
           </button>
 
@@ -282,9 +278,9 @@ const CourseModal = ({ course, onClose }) => {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function Courses() {
-  const [search, setSearch]           = useState("");
+  const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
-  const [wishlist, setWishlist]       = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [modalCourse, setModalCourse] = useState(null);
 
   const toggleWishlist = (id) =>
@@ -292,7 +288,7 @@ export default function Courses() {
 
   const filtered = courses.filter((c) => {
     const matchSearch = c.courseName.toLowerCase().includes(search.toLowerCase())
-                     || c.description.toLowerCase().includes(search.toLowerCase());
+      || c.description.toLowerCase().includes(search.toLowerCase());
     const matchFilter = activeFilter === "All" || c.tag === activeFilter;
     return matchSearch && matchFilter;
   });
@@ -321,8 +317,8 @@ export default function Courses() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-10 pr-10 py-3 rounded-full bg-gray-800 text-white text-sm
-                       border border-gray-700 outline-none placeholder-gray-500
-                       focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+border border-gray-700 outline-none placeholder-gray-500
+focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
           />
           {search && (
             <button
@@ -342,7 +338,7 @@ export default function Courses() {
             key={f}
             onClick={() => setActiveFilter(f)}
             className={`px-4 py-1.5 rounded-full text-sm font-semibold border transition-all duration-200
-              ${activeFilter === f
+${activeFilter === f
                 ? "bg-blue-600 text-white border-blue-600"
                 : "bg-transparent text-gray-400 border-gray-700 hover:border-blue-500 hover:text-blue-400"
               }`}

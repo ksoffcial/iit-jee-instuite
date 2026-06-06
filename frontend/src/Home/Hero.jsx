@@ -98,14 +98,14 @@ export default function Hero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-sm">
               <Zap size={14} className="text-yellow-400" />
-              <span>India's #1  JEE & NEET Coaching Institute</span>
+              <span>Purnia's  #1  JEE & NEET Coaching Institute</span>
             </div>
 
             {/* Headline */}
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
                 Crack{" "}
-                <span className="text-gradient">IIT JEE</span>
+                <span className="text-gradient">JEE</span>
                 <br />& <span className="text-gradient">NEET</span> with
               </h1>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
@@ -160,7 +160,7 @@ export default function Hero() {
             {/* Central Orb */}
             <div className="relative z-10 w-44 h-44 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-full bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 glow-blue flex flex-col items-center justify-center shadow-2xl border border-white/10">
               <GraduationCap size={48} className="text-white mb-2" />
-              <span className="text-white font-bold text-lg">APEX IIT</span>
+              <span className="text-white font-bold text-lg">Rakesh Physics</span>
               <span className="text-blue-200 text-xs">Est. 2006</span>
             </div>
 
@@ -181,7 +181,7 @@ export default function Hero() {
 
             {/* Rank Badge */}
             <div className="absolute top-1/2 -translate-y-1/2 -right-2 lg:right-4 bg-yellow-400/10 border border-yellow-400/30 text-yellow-300 rounded-xl px-3 py-2 text-xs font-bold backdrop-blur-md float-2">
-              🏆 AIR 1 - 2024
+              🏆 Purnia | Bihar
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@ export default function Hero() {
           <span className="text-blue-400 text-xs font-bold uppercase tracking-widest whitespace-nowrap">🎯 Live Now</span>
           <div className="overflow-hidden flex-1">
             <div className="text-sm text-gray-300 whitespace-nowrap">
-              Admissions Open for JEE 2026 Batch · Free Demo Class Every Saturday 10AM · New NEET Biology Batch Starting 15th March · Download Free Study Material →
+              Admissions Open for  2026 Batch  · Free Demo Class for 11th & 12th boards   · New NEET Batch   · Download Free Study Material →
             </div>
           </div>
         </div>

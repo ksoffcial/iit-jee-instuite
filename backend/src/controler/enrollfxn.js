@@ -51,13 +51,17 @@ const studenEnrollment = async (req, res) => {
             return res.status(404).send("Id does not exist ")
         }
 
-        const enrolDetails = await Enrollement.find({ userId }).populate("courseId");
+        // const enrolDetails = await Enrollement.find({ userId }).populate({path:"courseId", select:"BatchName className startDate timePeriods totalAmount totalDiscount finalPrice"});
+        const enrolDetails = await Enrollement.find({ userId }).populate({path:"courseId"});
 
         if (!enrolDetails) {
             return res.status(404).send("Enrollment does not exist ")
         }
 
-        res.status(200).send(enrolDetails);
+        res.status(200).json({
+            message:"data found sucessfully",
+            data:enrolDetails,
+        });
 
 
     }
@@ -69,15 +73,10 @@ const studenEnrollment = async (req, res) => {
 const courseEnrollment = async (req, res) => {
     try {
         const { id } = req.params;
-
-
         if (!id) {
             return res.status(404).send("Id is not valid ");
         }
-
-
         const batchData = await Enrollement.find({ courseId: id }).populate({ path: 'userId', select: "fullName emailId phoneNumber" });
-
         if (!batchData) {
             return res.status(404).send("Id does not exist ");
         }

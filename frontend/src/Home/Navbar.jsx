@@ -175,10 +175,17 @@ const Navbar = () => {
             className="flex items-center gap-3 group cursor-pointer flex-shrink-0"
             onClick={() => navigate('/')}
           >
-            <div className={`relative logo-glow bg-gradient-to-br from-blue-600 to-cyan-500 p-2.5 rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
+            
+            {/* <div className={`relative logo-glow bg-gradient-to-br from-blue-600 to-cyan-500 p-2.5 rounded-2xl text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
               <GraduationCap size={22} strokeWidth={2.5} />
+             
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-white" />
+            </div> */}
+
+            <div className='size-12 object-cover'>
+              <img src="../public/logo.png" alt="" />
             </div>
+
             <div className="flex flex-col leading-none">
               <span className="text-[17px] sm:text-lg font-black tracking-tight text-gray-900 uppercase">
                 Rakesh <span className="shimmer-text">Physics</span>

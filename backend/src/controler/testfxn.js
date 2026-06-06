@@ -338,9 +338,38 @@ const getStudentResult = async (req, res) => {
     }
 };
 
+const getStudentAllResult = async(req,res)=>{
+    try{
+        const userId = req.result._id;
+
+        if(!userId){
+            return res.status(500).send("userId not found or user Id is not valid");
+        }
+
+
+        const result = await Attempt.find({userId}).select("totalMarks obtainedMarks startedAt status").populate({path:"testId", select:"TestName ClassName durationMinutes startTime endTime"})
+
+        if(!result){
+            return res.status(500).send("Data not found")
+        }
+
+        res.status(200).json({
+            message:"data found sucessfully",
+            data:result
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            message:"Error while fetching student result",
+            error:err.message,
+        })
+    }
+
+}
 
 
 
 
 
-module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult };
+
+module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult,getStudentAllResult };

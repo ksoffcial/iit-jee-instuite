@@ -114,7 +114,7 @@ const logOut = async (req, res) => {
     }
 }
 
-const getUserByid = async () => {
+const getUserByid = async (req,res) => {
     try {
         const userId = req.result._id;
 
@@ -122,13 +122,16 @@ const getUserByid = async () => {
             return res.status(404).send("Id is not defined ");
         }
 
-        const result = await User.findById(userId);
+        const result = await User.findById(userId).select("fullName emailId phoneNumber gender role");
 
         if (!result) {
             res.status(404).send("user does not exist or Some internal Issue ");
         }
 
-        res.status(200).send(result);
+        res.status(200).json({
+            message:"Data found sucessfully",
+            data:result
+        })
     }
     catch (err) {
         res.status(500).send("some error to get the user data " + err.message);

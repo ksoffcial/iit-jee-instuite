@@ -8,10 +8,10 @@ export const enrolmentDetails = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await axiosClient.get("/enroll/studentEnrollment", { withCredentials: true })
-            return response.data
+            return response.data.data
         }
         catch (err) {
-            return rejectWithValue(err.response?.data?.message || err.message)
+            return rejectWithValue(err.response?.data?.data?.message || err.message)
         }
     }
 
@@ -41,7 +41,7 @@ const enrollSlice = createSlice({
                 state.enrolledCourseIds = action.payload.map(
                     (item) => item?.courseId._id
                 );
-                state.isPaidUser = action.payload.length > 0;
+                state.isPaidUser = action.payload?.length > 0;
                 state.user = action.payload;
             })
             .addCase(enrolmentDetails.rejected, (state, action) => {
