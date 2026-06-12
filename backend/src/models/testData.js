@@ -8,7 +8,8 @@ const testSchema = new Schema({
     },
 
     ClassName: {
-        type: String,
+        type:String,
+        enum:["11","12","13","14"],
         required: true,
     },
 

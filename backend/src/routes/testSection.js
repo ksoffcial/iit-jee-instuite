@@ -1,6 +1,6 @@
 const express = require("express");
 const adminMiddleWare = require("../middleware/adminMiddleware");
-const { createTest, deleteTest, getAllTest, getById, submitTest,getStudentResult, getSudentAllResult, testWiseResult,getStudentAllResult} = require("../controler/testfxn");
+const { createTest, deleteTest, getAllTest, getById, submitTest,getStudentResult, getSudentAllResult, testWiseResult,getStudentAllResult, mockByClass} = require("../controler/testfxn");
 const testRouter = express.Router();
 const userMiddleWare = require("../middleware/userMiddleware")
 
@@ -13,6 +13,7 @@ testRouter.get("/result/:id", userMiddleWare, getStudentResult);
 testRouter.get("/studentAll",userMiddleWare,getSudentAllResult);
 testRouter.get("/testwise/:id",adminMiddleWare,testWiseResult)
 testRouter.get("/getStudentAllResult",userMiddleWare,getStudentAllResult)
+testRouter.get("/mockbyclass/:id",userMiddleWare,mockByClass)
 
 
 module.exports = testRouter;

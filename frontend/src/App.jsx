@@ -35,6 +35,9 @@ import TotalEnrollment from './Admin/TotalEnrollment'
 import TestResult from './Admin/TestResult'
 import AttemptTest from './Home/AttemptTest '
 import Result from './Admin/Result'
+import MyExam from './Home/MyExam'
+import MockTest from './Home/MockTest'
+import TestDetails from './Home/TestDetails'
 
 
 
@@ -67,7 +70,7 @@ const App = () => {
         <Route path='/register' element={isAuthenticated ? <Navigate to="/" /> : <Register />} />
         <Route path='/course' element={<><Navbar /> <Courses /> <BatchUi /> <Footer /></>} />
         <Route path='/result' element={<> <Navbar /> <StudentResults /> <Footer /></>} />
-        <Route path='/testSection' element={<><Navbar></Navbar> <TestData /> <Footer /></>} />
+        <Route path='/testSection' element={<> <TestData /> </>} />
         <Route path='/jee' element={<Jee />} />
         <Route path='/admin' element={isAuthenticated && user.role == "admin" ? <AdminPanel /> : <Navigate to="/" />} />
         <Route path='/admin/getAllUser' element={isAuthenticated && user.role == 'admin' ? <AllUser /> : <Navigate to="/" />} />
@@ -92,6 +95,9 @@ const App = () => {
         <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage /> : <Navigate to="/login" />} />
         <Route path='/user/myprofile' element={isAuthenticated ? <UserProfile/>:<Navigate to="/login"/>}/>
         <Route path='/attamp/test' element={<AttemptTest/>}/>
+        <Route path='/test/myexam' element={isAuthenticated ? <MyExam/> : <Navigate to="/login"/>}/>
+        <Route path='/test/mockTest' element={isAuthenticated ? <MockTest/> : <Navigate to="/login"/>}/>
+        <Route path='/test/mock/:id' element={isAuthenticated ? <TestDetails/> : <Navigate to='/login'/>}/>
       </Routes>
     </div>
   )

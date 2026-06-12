@@ -155,7 +155,7 @@ const Navbar = () => {
                 <span className="opacity-40">•</span>
                 <span className="flex items-center gap-1.5">📚 10 days free demo classes</span>
                 <span className="opacity-40">•</span>
-                <span className="flex items-center gap-1.5">📞 Call: +91-6203981174 for Counselling</span>
+                <span className="flex items-center gap-1.5">Free Live Classed in Youtube</span>
                 <span className="opacity-40">•</span>
               </span>
             ))}

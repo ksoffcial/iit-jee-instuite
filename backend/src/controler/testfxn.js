@@ -29,16 +29,16 @@ const deleteTest = async (req, res) => {
 const getAllTest = async (req, res) => {
     try {
         const testData = await Test.find();
-        
-        if(!testData){
+
+        if (!testData) {
             res.status(200).json({
-                message:"Data does not found 👀"
+                message: "Data does not found 👀"
             })
         }
 
         res.status(200).json({
-            test:testData,
-            message:"Data fetch sucessfully ✔"
+            test: testData,
+            message: "Data fetch sucessfully ✔"
         })
 
     }
@@ -46,6 +46,7 @@ const getAllTest = async (req, res) => {
         res.status(404).send("not found data" + err.message)
     }
 }
+
 
 const getById = async (req, res) => {
     try {
@@ -77,7 +78,35 @@ const getById = async (req, res) => {
     }
 }
 
+const mockByClass = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(200).json({
+                message: "Test not found"
+            })
+        }
+        
 
+        const testData = await Test.find({ClassName:id}).select(" _id TestName description durationMinutes");
+
+        if(!testData){
+            return res.status(200).json({
+                message:"Some internal Error"
+            })
+        }
+
+        res.status(200).json({
+            data:testData,
+            message:"Data found sucessfully"
+        })
+    }
+    catch (err) {
+        res.status(404).json({
+            message:"some error in get mock" + err.message
+        })
+    }
+}
 
 const submitTest = async (req, res) => {
     try {
@@ -338,30 +367,30 @@ const getStudentResult = async (req, res) => {
     }
 };
 
-const getStudentAllResult = async(req,res)=>{
-    try{
+const getStudentAllResult = async (req, res) => {
+    try {
         const userId = req.result._id;
 
-        if(!userId){
+        if (!userId) {
             return res.status(500).send("userId not found or user Id is not valid");
         }
 
 
-        const result = await Attempt.find({userId}).select("totalMarks obtainedMarks startedAt status").populate({path:"testId", select:"TestName ClassName durationMinutes startTime endTime"})
+        const result = await Attempt.find({ userId }).select("totalMarks obtainedMarks startedAt status").populate({ path: "testId", select: "TestName ClassName durationMinutes startTime endTime" })
 
-        if(!result){
+        if (!result) {
             return res.status(500).send("Data not found")
         }
 
         res.status(200).json({
-            message:"data found sucessfully",
-            data:result
+            message: "data found sucessfully",
+            data: result
         })
     }
-    catch(err){
+    catch (err) {
         res.status(500).json({
-            message:"Error while fetching student result",
-            error:err.message,
+            message: "Error while fetching student result",
+            error: err.message,
         })
     }
 
@@ -372,4 +401,4 @@ const getStudentAllResult = async(req,res)=>{
 
 
 
-module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult,getStudentAllResult };
+module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult, getStudentAllResult, mockByClass };

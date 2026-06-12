@@ -19,8 +19,8 @@ import { useNavigate } from "react-router";
 const stats = [
   { icon: Trophy, label: "IIT Selections", value: "2,400+", color: "text-yellow-400" },
   { icon: Users, label: "Board Slected", value: "200,000+", color: "text-yellow-400" },
-  { icon: Trophy, label: "Students Enrolled", value: "15,000+", color: "text-blue-400" },
-  { icon: Target, label: "NEET Qualifiers", value: "3,800+", color: "text-green-400" },
+  { icon: Trophy, label: "Students Enrolled", value: "2,000+", color: "text-blue-400" },
+  { icon: Target, label: "NEET Qualifiers", value: "3,000+", color: "text-green-400" },
 ];
 
 const floatingBadges = [

@@ -11,6 +11,10 @@ const mentorSchema = new Schema({
         type: String,
         required: true
     },
+    imagePublicId: {
+      type: String,
+      required: true,
+    },
     rating: {
         type: "String",
         required: true,

@@ -1,20 +1,33 @@
-
-import React from 'react';
+import React from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import axiosClient from '../utils/axisoClient';
-import { UserPlus, Image, Star, BookOpen, GraduationCap, Briefcase, Phone, Send } from 'lucide-react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import axiosClient from "../utils/axisoClient";
+import {
+  UserPlus,
+  Star,
+  BookOpen,
+  GraduationCap,
+  Briefcase,
+  Phone,
+  Send,
+} from "lucide-react";
 
-// Enhanced Schema for validation
 const mentorSchema = z.object({
   mentorName: z.string().min(3, "Mentor name must be at least 3 letters"),
-  image: z.string().url("Please enter a valid image URL").or(z.string().min(1, "Image URL is required")),
+
+  image: z
+    .any()
+    .refine((files) => files?.length === 1, "Image is required"),
+
   rating: z.string().min(1, "Rating is required"),
   subject: z.string().min(2, "Subject is required"),
   degree: z.string().min(2, "Degree/Qualification is required"),
   experince: z.string().min(1, "Experience is required"),
-  contactNumber: z.string().length(10, "Contact must be 10 digits"),
+
+  contactNumber: z
+    .string()
+    .regex(/^[0-9]{10}$/, "Contact must be 10 digits"),
 });
 
 const AddMentor = () => {
@@ -24,18 +37,33 @@ const AddMentor = () => {
     reset,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(mentorSchema), // Connect Zod to React Hook Form
+    resolver: zodResolver(mentorSchema),
   });
 
   const onSubmit = async (data) => {
     try {
-      const response = await axiosClient.post("/mentor/create", data);
+      const formData = new FormData();
+
+      formData.append("mentorName", data.mentorName);
+      formData.append("image", data.image[0]);
+      formData.append("rating", data.rating);
+      formData.append("subject", data.subject);
+      formData.append("degree", data.degree);
+      formData.append("experince", data.experince);
+      formData.append("contactNumber", data.contactNumber);
+
+      const response = await axiosClient.post("/mentor/create", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       console.log("Success:", response.data);
-      alert("Form submitted successfully!");
+      alert("Mentor added successfully!");
       reset();
-      // Optional: Add a success toast here
     } catch (error) {
       console.error("Error adding mentor:", error);
+      alert(error?.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -51,142 +79,135 @@ const AddMentor = () => {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Mentor Name */}
             <div className="form-control">
               <label className="label font-semibold">Mentor Name</label>
-              <div className="relative">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                  <UserPlus size={18} />
+              <input
+                type="text"
+                placeholder="John Doe"
+                className={`input input-bordered w-full ${
+                  errors.mentorName ? "input-error" : ""
+                }`}
+                {...register("mentorName")}
+              />
+              {errors.mentorName && (
+                <span className="text-error text-sm mt-1">
+                  {errors.mentorName.message}
                 </span>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className={`input input-bordered w-full pl-10 ${errors.mentorName ? 'input-error' : ''}`}
-                  {...register("mentorName")}
-                />
-              </div>
-              {errors.mentorName && <span className="text-error text-sm mt-1">{errors.mentorName.message}</span>}
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Image URL */}
               <div className="form-control">
-                <label className="label font-semibold">Image URL</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <Image size={18} />
+                <label className="label font-semibold">Upload Image</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className={`file-input file-input-bordered w-full ${
+                    errors.image ? "file-input-error" : ""
+                  }`}
+                  {...register("image")}
+                />
+                {errors.image && (
+                  <span className="text-error text-sm mt-1">
+                    {errors.image.message}
                   </span>
-                  <input
-                    type="text"
-                    placeholder="https://image-link.com"
-                    className="input input-bordered w-full pl-10"
-                    {...register("image")}
-                  />
-                </div>
+                )}
               </div>
 
-              {/* Rating */}
               <div className="form-control">
                 <label className="label font-semibold">Rating</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <Star size={18} />
+                <input
+                  type="text"
+                  placeholder="e.g. 4.5"
+                  className="input input-bordered w-full"
+                  {...register("rating")}
+                />
+                {errors.rating && (
+                  <span className="text-error text-sm mt-1">
+                    {errors.rating.message}
                   </span>
-                  <input
-                    type="text"
-                    placeholder="e.g. 4.5"
-                    className="input input-bordered w-full pl-10"
-                    {...register("rating")}
-                  />
-                </div>
+                )}
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Subject */}
               <div className="form-control">
                 <label className="label font-semibold">Subject Expertise</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <BookOpen size={18} />
+                <input
+                  type="text"
+                  placeholder="Physics, Math, etc."
+                  className="input input-bordered w-full"
+                  {...register("subject")}
+                />
+                {errors.subject && (
+                  <span className="text-error text-sm mt-1">
+                    {errors.subject.message}
                   </span>
-                  <input
-                    type="text"
-                    placeholder="Physics, Math, etc."
-                    className="input input-bordered w-full pl-10"
-                    {...register("subject")}
-                  />
-                </div>
+                )}
               </div>
 
-              {/* Degree */}
               <div className="form-control">
                 <label className="label font-semibold">Qualification</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <GraduationCap size={18} />
+                <input
+                  type="text"
+                  placeholder="B.Tech, PhD, etc."
+                  className="input input-bordered w-full"
+                  {...register("degree")}
+                />
+                {errors.degree && (
+                  <span className="text-error text-sm mt-1">
+                    {errors.degree.message}
                   </span>
-                  <input
-                    type="text"
-                    placeholder="B.Tech, PhD, etc."
-                    className="input input-bordered w-full pl-10"
-                    {...register("degree")}
-                  />
-                </div>
+                )}
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Experience */}
               <div className="form-control">
                 <label className="label font-semibold">Experience</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <Briefcase size={18} />
+                <input
+                  type="text"
+                  placeholder="e.g. 5 Years"
+                  className="input input-bordered w-full"
+                  {...register("experince")}
+                />
+                {errors.experince && (
+                  <span className="text-error text-sm mt-1">
+                    {errors.experince.message}
                   </span>
-                  <input
-                    type="text"
-                    placeholder="e.g. 5 Years"
-                    className="input input-bordered w-full pl-10"
-                    {...register("experince")}
-                  />
-                </div>
+                )}
               </div>
 
-              {/* Contact */}
               <div className="form-control">
                 <label className="label font-semibold">Contact Number</label>
-                <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
-                    <Phone size={18} />
+                <input
+                  type="text"
+                  placeholder="10 digit number"
+                  className="input input-bordered w-full"
+                  {...register("contactNumber")}
+                />
+                {errors.contactNumber && (
+                  <span className="text-error text-sm mt-1">
+                    {errors.contactNumber.message}
                   </span>
-                  <input
-                    type="text"
-                    placeholder="10 digit number"
-                    className="input input-bordered w-full pl-10"
-                    {...register("contactNumber")}
-                  />
-                </div>
-                {errors.contactNumber && <span className="text-error text-sm mt-1">{errors.contactNumber.message}</span>}
+                )}
               </div>
             </div>
 
-            <div className="pt-4">
-              <button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="btn btn-primary w-full gap-2 shadow-lg"
-              >
-                {isSubmitting ? (
-                  <span className="loading loading-spinner"></span>
-                ) : (
-                  <>
-                    <Send size={18} />
-                    Submit Details
-                  </>
-                )}
-              </button>
-            </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn btn-primary w-full gap-2 shadow-lg"
+            >
+              {isSubmitting ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                <>
+                  <Send size={18} />
+                  Submit Details
+                </>
+              )}
+            </button>
           </form>
         </div>
       </div>

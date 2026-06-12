@@ -15,12 +15,12 @@ const Home = () => {
     <div>
       <Navbar />
       <Hero />
-      <div className='hidden md:block'>
+      <div >
         <Courses />
       </div>
-      <div className='block md:hidden'>
+      {/* <div className='block md:hidden'>
         <CourseCarousel />
-      </div>
+      </div> */}
       <BatchUi />
       <WhyChooseUs />
       <Mentor />

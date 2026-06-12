@@ -18,7 +18,7 @@ const courses = [
     { label: 'IIT-JEE Main', icon: Atom },
     { label: 'IIT-JEE Advanced', icon: Zap },
     { label: 'NEET UG', icon: FlaskConical },
-    { label: 'Foundation (8th–10th)', icon: BookOpen },
+    { label: 'Foundation (8th–12th)', icon: BookOpen },
     { label: 'Crash Course', icon: Award },
     { label: 'Online Batches', icon: GraduationCap },
 ]
@@ -109,17 +109,19 @@ const Footer = () => {
                         <div className="sm:col-span-2 lg:col-span-1">
                             {/* Logo */}
                             <div className="flex items-center gap-3 mb-5">
-                                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30 flex-shrink-0">
-                                    <Atom size={24} className="text-white" />
+                                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30 flex-shrink-0">
+                                    {/* <Atom size={24} className="text-white" /> */}
+                                    <img src="/logo.png" alt="" />
+
                                 </div>
                                 <div>
-                                    <p className="text-white font-black text-lg leading-tight tracking-tight">Rakesh Physics</p>
+                                    <p className="text-white font-black text-lg leading-tight tracking-tight upp">Rakesh Physics</p>
                                     <p className="text-blue-400 text-xs font-semibold tracking-widest uppercase">Institute</p>
                                 </div>
                             </div>
 
                             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                                Bihar's most trusted IIT-JEE & NEET coaching institute, shaping toppers since 2012.
+                                Bihar's most trusted IIT-JEE & NEET coaching institute, shaping toppers since 2002.
                                 World-class faculty, proven results, and a passion for excellence — right here in Purnea.
                             </p>
 

@@ -1,17 +1,48 @@
 const Mentor = require("../models/mentorData");
 
+const cloudinary = require("../dbConnector/cloudanairy");
 
 const createMentor = async (req, res) => {
-    try {
-        const mentorData = req.body;
-        await Mentor.create(mentorData)
+  try {
+    const mentorData = req.body;
 
-        res.status(200).send("create sucessfully")
+    if (!req.file) {
+      return res.status(400).json({
+        message: "Mentor image is required",
+      });
     }
-    catch (err) {
-        res.status(404).send("Error in creating " + err.message)
-    }
-}
+
+    const uploadResult = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        {
+          folder: "mentor_images",
+          resource_type: "image",
+        },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      );
+
+      stream.end(req.file.buffer);
+    });
+
+    mentorData.image = uploadResult.secure_url;
+    mentorData.imagePublicId = uploadResult.public_id;
+
+    const mentor = await Mentor.create(mentorData);
+
+    res.status(201).json({
+      message: "Mentor created successfully",
+      data: mentor,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Error in creating mentor",
+      error: err.message,
+    });
+  }
+};
 
 const getAllMentor = async (req, res) => {
     try {

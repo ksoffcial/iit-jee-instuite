@@ -185,14 +185,16 @@ const CreateTest = () => {
                   <label className="label text-xs font-bold uppercase">
                     Class Name
                   </label>
-                  <input
-                    type="text"
-                    placeholder="e.g. Class 12-A"
-                    className={`input input-bordered w-full ${
-                      errors.ClassName ? "input-error" : ""
-                    }`}
+                 
+                  <select
+                    className="select select-bordered"
                     {...register("ClassName")}
-                  />
+                  >
+                    <option value="11">11 th</option>
+                    <option value="12">12 th</option>
+                    <option value="13">jee</option>
+                    <option value="14">neet</option>
+                  </select>
                   {errors.ClassName && (
                     <span className="text-error text-xs mt-1">
                       {errors.ClassName.message}
