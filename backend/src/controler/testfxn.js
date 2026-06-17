@@ -70,10 +70,12 @@ const getById = async (req, res) => {
             });
         }
 
-        res.status(200).send(testData)
+        res.status(200).json({
+            data: testData,
+            message: "data found success fully"
+        })
     }
     catch (err) {
-        console.log(err.message)
         res.status(500).send("Error in the getbyid" + err.message)
     }
 }
@@ -86,24 +88,24 @@ const mockByClass = async (req, res) => {
                 message: "Test not found"
             })
         }
-        
 
-        const testData = await Test.find({ClassName:id}).select(" _id TestName description durationMinutes");
 
-        if(!testData){
+        const testData = await Test.find({ ClassName: id }).select(" _id TestName description durationMinutes");
+
+        if (!testData) {
             return res.status(200).json({
-                message:"Some internal Error"
+                message: "Some internal Error"
             })
         }
 
         res.status(200).json({
-            data:testData,
-            message:"Data found sucessfully"
+            data: testData,
+            message: "Data found sucessfully"
         })
     }
     catch (err) {
         res.status(404).json({
-            message:"some error in get mock" + err.message
+            message: "some error in get mock" + err.message
         })
     }
 }
@@ -113,6 +115,7 @@ const submitTest = async (req, res) => {
         const userId = req.result._id;
         const testId = req.params.id;
         const { answers } = req.body;
+       
 
 
         if (!answers || !Array.isArray(answers)) {
@@ -121,7 +124,6 @@ const submitTest = async (req, res) => {
             });
         }
         const test = await Test.findById(testId);
-
         if (!test) {
             return res.status(404).json({
                 message: "Test not found",
@@ -134,6 +136,7 @@ const submitTest = async (req, res) => {
                 message: "Test submission time is over",
             });
         }
+
         let attempt = await Attempt.findOne({
             userId,
             testId,
@@ -146,6 +149,8 @@ const submitTest = async (req, res) => {
                 startedAt: now,
             });
         }
+
+
 
         if (attempt.status === "submitted") {
             return res.status(400).json({
@@ -160,10 +165,10 @@ const submitTest = async (req, res) => {
             totalMarks += question.marks;
 
             const userAnswer = answers.find(
-                (ans) => ans.questionId.toString() === question._id.toString()
+                (ans) => ans.questionIndex.toString() === question._id.toString()
             );
 
-            const selectedAnswer = userAnswer?.selectedAnswer || null;
+            const selectedAnswer = userAnswer?.selectedOption || null;
 
             let isCorrect = false;
             let marksObtained = 0;
@@ -186,6 +191,7 @@ const submitTest = async (req, res) => {
                 marksObtained,
             };
         });
+
 
 
         attempt.answers = checkedAnswers;

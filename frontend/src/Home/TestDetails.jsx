@@ -121,7 +121,7 @@ const TestDetails = () => {
 
                   <div className="card-actions mt-7">
                     <button
-                      onClick={() => navigate(`/test/Attemps/${data._id}`)}
+                      onClick={() => navigate(`/test/Attempts/${data._id}`)}
                       className="btn bg-blue-600 hover:bg-blue-700 text-white border-none w-full rounded-xl"
                     >
                       <PlayCircle size={20} />

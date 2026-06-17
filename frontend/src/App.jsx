@@ -82,7 +82,6 @@ const App = () => {
         <Route path='/admin/result/:id' element={isAuthenticated && user.role == 'admin' ? <Result /> : <Navigate to='/' />} />
         <Route path='/test/create' element={isAuthenticated && user.role == 'admin' ? <CreateTest /> : <Navigate to="/" />} />
         <Route path='/test/delete' element={isAuthenticated && user.role == 'admin' ? <DeleteTest /> : <Navigate to="/" />} />
-        <Route path='/test/attempt/:id' element={<AttemptTest />} />
         <Route path='/doubt' element={isAuthenticated ? <AiChat /> : <Login />} />
         <Route path='/admin/mentor' element={isAuthenticated && user.role == "admin" ? <Mentordetails /> : <Navigate to="/" />} />
         <Route path='/mentor/deletementor' element={isAuthenticated && user.role == "admin" ? <GetMentor /> : <Navigate to="/" />} />
@@ -94,10 +93,10 @@ const App = () => {
         <Route path='/query' element={<Userquery />} />
         <Route path='/courese/enroll/:id' element={isAuthenticated ? <EnrollPage /> : <Navigate to="/login" />} />
         <Route path='/user/myprofile' element={isAuthenticated ? <UserProfile/>:<Navigate to="/login"/>}/>
-        <Route path='/attamp/test' element={<AttemptTest/>}/>
         <Route path='/test/myexam' element={isAuthenticated ? <MyExam/> : <Navigate to="/login"/>}/>
         <Route path='/test/mockTest' element={isAuthenticated ? <MockTest/> : <Navigate to="/login"/>}/>
         <Route path='/test/mock/:id' element={isAuthenticated ? <TestDetails/> : <Navigate to='/login'/>}/>
+        <Route path='/test/Attempts/:id' element={isAuthenticated ? <AttemptTest/> : <Navigate to='/login'/>}/>
       </Routes>
     </div>
   )
