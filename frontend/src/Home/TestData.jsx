@@ -28,7 +28,7 @@ const TestData = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
           <button
             onClick={() => navigate("/")}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition"
+            className="w-full sm:w-auto cursor-pointer flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition"
           >
             <ArrowLeft size={18} />
             Home
@@ -81,7 +81,7 @@ const TestData = () => {
 
                   <button
                     onClick={() => navigate(item.path)}
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition"
+                    className="w-full sm:w-auto cursor-pointer flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-xl font-semibold transition"
                   >
                     Open Portal
                     <ArrowRight size={18} />

@@ -38,6 +38,7 @@ import Result from './Admin/Result'
 import MyExam from './Home/MyExam'
 import MockTest from './Home/MockTest'
 import TestDetails from './Home/TestDetails'
+import ExamSub from './Home/ExamSub'
 
 
 
@@ -97,6 +98,7 @@ const App = () => {
         <Route path='/test/mockTest' element={isAuthenticated ? <MockTest/> : <Navigate to="/login"/>}/>
         <Route path='/test/mock/:id' element={isAuthenticated ? <TestDetails/> : <Navigate to='/login'/>}/>
         <Route path='/test/Attempts/:id' element={isAuthenticated ? <AttemptTest/> : <Navigate to='/login'/>}/>
+        <Route path='/exam/subject/:id' element={isAuthenticated ? <ExamSub/> : <Navigate to={'/login'}/>}/>
       </Routes>
     </div>
   )

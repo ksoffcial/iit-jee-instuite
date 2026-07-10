@@ -228,6 +228,7 @@ const submitTest = async (req, res) => {
             message: "Error while submitting test",
             error: err.message,
         });
+        console.log(err.message)
     }
 };
 
