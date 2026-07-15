@@ -360,7 +360,6 @@ const Navbar = () => {
                   <div className="logo-glow bg-gradient-to-br from-blue-600 to-cyan-500 p-2 rounded-xl text-white">
                     <GraduationCap size={18} strokeWidth={2.5} />
                   </div>
-                  <img src="/logo.png" alt="" />
                   <span className="font-black text-gray-900 text-sm uppercase tracking-tight">
                     Rakesh <span className="shimmer-text">Physics</span>
                   </span>
