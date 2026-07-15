@@ -10,12 +10,15 @@ import Footer from '../Home/Footer'
 import BatchUi from '../Home/BatchUi'
 import CourseCarousel from '../Home/Coursecarousel'
 import Member from '../Home/Member'
+import OurGallery from '../Home/OurGallery'
+import AiVideo from '../Home/AiVideo'
 
 const Home = () => {
   return (
     <div>
       <Navbar />
       <Hero />
+      <AiVideo/>
       <div >
         <Courses />
       </div>
@@ -24,6 +27,7 @@ const Home = () => {
       </div> */}
       <BatchUi />
       <WhyChooseUs />
+      <OurGallery/>
       <Member/>
       {/* <Mentor /> */}
       <StudentResults />
