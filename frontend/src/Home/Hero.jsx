@@ -17,10 +17,10 @@ import {
 import { useNavigate } from "react-router";
 
 const stats = [
-  { icon: Trophy, label: "IIT Selections", value: "2,400+", color: "text-yellow-400" },
+  { icon: Trophy, label: "IIT Selections", value: "400+", color: "text-yellow-400" },
   { icon: Users, label: "Board Slected", value: "200,000+", color: "text-yellow-400" },
   { icon: Trophy, label: "Students Enrolled", value: "2,000+", color: "text-blue-400" },
-  { icon: Target, label: "NEET Qualifiers", value: "3,000+", color: "text-green-400" },
+  { icon: Target, label: "NEET Qualifiers", value: "600+", color: "text-green-400" },
 ];
 
 const floatingBadges = [
@@ -39,6 +39,7 @@ const shayaris = [
 export default function Hero() {
   const [shayariIndex, setShayariIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const imageUrl = "https://res.cloudinary.com/dkt7ksipv/image/upload/v1784041388/IMG_20260120_130106_qv00ea.png";
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -96,9 +97,9 @@ export default function Hero() {
           {/* Left Content */}
           <div className="space-y-6 animate-fade-in-up">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-sm">
+            <div className="inline-flex items-center mt-8 md:mt-0 gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-sm">
               <Zap size={14} className="text-yellow-400" />
-              <span>Purnia's  #1  JEE & NEET Coaching Institute</span>
+              <span>#1 Result Maker Instuite of North Bihar</span>
             </div>
 
             {/* Headline */}
@@ -158,10 +159,12 @@ export default function Hero() {
           {/* Right Visual */}
           <div className="relative flex items-center justify-center h-[380px] sm:h-[420px] lg:h-[500px]">
             {/* Central Orb */}
-            <div className="relative z-10 w-44 h-44 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-full bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 glow-blue flex flex-col items-center justify-center shadow-2xl border border-white/10">
+            <div className="relative z-10 w-44 h-44 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-full  flex flex-col items-center justify-center shadow-2xl border border-white/10">
               <GraduationCap size={48} className="text-white mb-2" />
-              <span className="text-white font-bold text-lg">Rakesh Physics</span>
-              <span className="text-blue-200 text-xs">Est. 2006</span>
+              {/* <span className="text-white font-bold text-lg">Rakesh Physics</span>
+              <span className="text-blue-200 text-xs">Est. 2006</span> */}
+
+              <img src={imageUrl} alt="" className="rounded-full object-top object-cover  w-full h-full"/>
             </div>
 
             {/* Orbit Rings */}

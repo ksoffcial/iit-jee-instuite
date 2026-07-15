@@ -6,8 +6,8 @@ const userMiddleWare = require("../middleware/userMiddleware")
 
 testRouter.post("/create", adminMiddleWare, createTest);
 testRouter.delete("/delete/:id", adminMiddleWare, deleteTest)
-testRouter.get('/getAllTest', getAllTest)
-testRouter.get("/getById/:id",getById)
+testRouter.get('/getAllTest',adminMiddleWare,getAllTest)
+testRouter.get("/getById/:id",userMiddleWare,getById)
 testRouter.post("/submit/:id",userMiddleWare,submitTest);
 testRouter.get("/result/:id", userMiddleWare, getStudentResult);
 testRouter.get("/studentAll",userMiddleWare,getSudentAllResult);

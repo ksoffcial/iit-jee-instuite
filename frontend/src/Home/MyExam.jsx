@@ -8,9 +8,11 @@ const MyExam = () => {
 
   const enrollMentData = async () => {
     const response = await axiosClient.get("/enroll/studentEnrollment");
-    console.log(response.data.data)
+    // console.log(response.data.data)
     setEnrollData(response.data.data);
   }
+
+  
 
   useEffect(() => {
     enrollMentData();

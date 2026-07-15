@@ -9,6 +9,7 @@ import StudentResults from '../Home/StudentResults'
 import Footer from '../Home/Footer'
 import BatchUi from '../Home/BatchUi'
 import CourseCarousel from '../Home/Coursecarousel'
+import Member from '../Home/Member'
 
 const Home = () => {
   return (
@@ -23,7 +24,8 @@ const Home = () => {
       </div> */}
       <BatchUi />
       <WhyChooseUs />
-      <Mentor />
+      <Member/>
+      {/* <Mentor /> */}
       <StudentResults />
       <Feedback />
       <Footer />

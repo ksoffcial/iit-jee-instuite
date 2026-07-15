@@ -52,15 +52,15 @@ const studenEnrollment = async (req, res) => {
         }
 
         // const enrolDetails = await Enrollement.find({ userId }).populate({path:"courseId", select:"BatchName className startDate timePeriods totalAmount totalDiscount finalPrice"});
-        const enrolDetails = await Enrollement.find({ userId }).populate({path:"courseId"});
+        const enrolDetails = await Enrollement.find({ userId }).populate({ path: "courseId" });
 
         if (!enrolDetails) {
             return res.status(404).send("Enrollment does not exist ")
         }
 
         res.status(200).json({
-            message:"data found sucessfully",
-            data:enrolDetails,
+            message: "data found sucessfully",
+            data: enrolDetails,
         });
 
 
@@ -98,8 +98,8 @@ const courseEnrollment = async (req, res) => {
     }
 }
 
-// for admin uses 
 
+// for admin uses 
 const totalEnrollment = async (req, res) => {
     try {
 
@@ -130,7 +130,30 @@ const totalEnrollment = async (req, res) => {
 
 
 
+// this api is used to get enrollment data by enrollment for the batch  
+const studentEnrollById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) {
+            return res.status(400).send("Id is not valid")
+        }
+        const resultData = await Enrollement.findById(id).select("courseId").populate({ path: 'courseId', select: 'BatchName subjects' });
+        if (!resultData) {
+            return res.status(400).send("Data not found in the enrollment section ")
+        }
+        res.status(200).json({
+            data: resultData,
+            message: "data found sucessfully "
+        });
+    }
+    catch (err) {
+        res.status(403).send("Error in get by id ");
+    }
+}
 
 
 
-module.exports = { enrollNow, studenEnrollment, totalEnrollment, courseEnrollment };
+
+
+
+module.exports = { enrollNow, studenEnrollment, totalEnrollment, courseEnrollment, studentEnrollById };

@@ -4,6 +4,7 @@ import {
   BookOpen, Target, Zap, ChevronRight, GraduationCap,
   BadgeCheck, Flame, ArrowUpRight
 } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 const filters = ['All', 'IIT-JEE', 'NEET', 'Foundation']
 
@@ -136,10 +137,12 @@ const toppers = [
   },
 ]
 
+
+
 const achievements = [
   { icon: Crown, value: '200,000+', label: 'Total Selections', color: 'text-amber-400', bg: 'bg-amber-400/10' },
-  { icon: Target, value: '2500', label: 'IIT Selections (2024)', color: 'text-blue-400', bg: 'bg-blue-400/10' },
-  { icon: Flame, value: '3000', label: 'NEET Qualifiers', color: 'text-rose-400', bg: 'bg-rose-400/10' },
+  { icon: Target, value: '400', label: 'IIT Selections (2024)', color: 'text-blue-400', bg: 'bg-blue-400/10' },
+  { icon: Flame, value: '600', label: 'NEET Qualifiers', color: 'text-rose-400', bg: 'bg-rose-400/10' },
   { icon: TrendingUp, value: '98%', label: 'Pass Rate', color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
 ]
 
@@ -150,6 +153,7 @@ const BadgeIcon = ({ type, size = 16 }) => {
 }
 
 const StudentResults = () => {
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('All')
 
   const filtered = activeFilter === 'All'
@@ -316,12 +320,12 @@ const StudentResults = () => {
               Join thousands of students who trusted us with their dreams — and made them real.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold px-7 py-3.5 rounded-2xl shadow-xl shadow-amber-500/30 hover:shadow-amber-400/40 transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base">
+              <button onClick={()=>navigate("/query")} className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-white font-bold px-7 py-3.5 rounded-2xl shadow-xl shadow-amber-500/30 hover:shadow-amber-400/40 transition-all duration-300 hover:-translate-y-0.5 text-sm sm:text-base">
                 <Zap size={16} className="fill-white" />
                 Enroll Now — Free Demo
                 <ArrowUpRight size={16} />
               </button>
-              <button className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/8 hover:bg-white/15 border border-white/15 hover:border-amber-400/40 text-white font-semibold px-7 py-3.5 rounded-2xl transition-all duration-300 text-sm sm:text-base">
+              <button onClick={()=>navigate("/result")} className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/8 hover:bg-white/15 border border-white/15 hover:border-amber-400/40 text-white font-semibold px-7 py-3.5 rounded-2xl transition-all duration-300 text-sm sm:text-base">
                 <BookOpen size={15} />
                 View Full Results
                 <ChevronRight size={15} />

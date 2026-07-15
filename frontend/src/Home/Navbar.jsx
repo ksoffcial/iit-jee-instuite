@@ -375,14 +375,14 @@ const Navbar = () => {
               {/* Nav Links */}
               <div className="flex-1 overflow-y-auto px-4 py-4 space-y-1">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-3 mb-3">Navigation</p>
-                {navLinks.map(({ name, href, icon: Icon }, i) => (
+                {navLinks.map(({ name, href,route, icon: Icon }, i) => (
                   <motion.a
                     key={name}
                     initial={{ opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06, type: 'spring', stiffness: 300 }}
                     href={href}
-                    onClick={() => { setActiveLink(name); setIsOpen(false); }}
+                    onClick={() => { setActiveLink(name); setIsOpen(false); navigate(`${route}`) }}
                     className={`mobile-link-hover flex items-center justify-between px-4 py-3.5 rounded-xl border font-semibold text-sm transition-all duration-200 ${
                       activeLink === name
                         ? 'bg-blue-50 border-blue-200 text-blue-700'

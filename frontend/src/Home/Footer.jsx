@@ -27,37 +27,37 @@ const contactInfo = [
     {
         icon: MapPin,
         label: 'Our Location',
-        value: 'Near rangbhumi maidan ,\nPurnea, Bihar — 854301',
+        value: 'Near ursuline convent chowk ,\nPurnea, Bihar — 854301',
         color: 'text-rose-400',
         bg: 'bg-rose-400/10',
     },
     {
         icon: Phone,
         label: 'Call Us',
-        value: '+91 62039 81174\n+91 92292 97418',
+        value: '+91 62039 81174\n+91 90655 22564',
         color: 'text-emerald-400',
         bg: 'bg-emerald-400/10',
     },
     {
         icon: Mail,
         label: 'Email Us',
-        value: 'info@rakeshphysics.in\nadmissions@rakeshphysics.in',
+        value: 'rakeshphysicsreply@gmail.com\nrakeshphysicsreply@gmail.com',
         color: 'text-blue-400',
         bg: 'bg-blue-400/10',
     },
     {
         icon: Clock,
         label: 'Office Hours',
-        value: 'Mon – Sat: 8:00 AM – 8:00 PM\nSunday: 10:00 AM – 2:00 PM',
+        value: 'Mon – Sat: 6:00 AM – 8:00 PM\nSunday: Closed',
         color: 'text-amber-400',
         bg: 'bg-amber-400/10',
     },
 ]
 
 const socials = [
-    { icon: Youtube, label: 'YouTube', href: '#', color: 'hover:bg-red-600', border: 'hover:border-red-500' },
-    { icon: Facebook, label: 'Facebook', href: '#', color: 'hover:bg-blue-600', border: 'hover:border-blue-500' },
-    { icon: Instagram, label: 'Instagram', href: '#', color: 'hover:bg-pink-600', border: 'hover:border-pink-500' },
+    { icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@RakeshPhysics', color: 'hover:bg-red-600', border: 'hover:border-red-500' },
+    { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/rakeshkumarjha86', color: 'hover:bg-blue-600', border: 'hover:border-blue-500' },
+    { icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/rakeshpysics?fbclid=IwY2xjawTDCsxleHRuA2FlbQIxMABicmlkETFibjNxd0xDb3RCUmRST1Vyc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHlWKPtvdD3eQRrMeKmb97qAqmEs_5xgKBNjOOhgC0Ecpxh1nq9TBu46n5vUs_aem_1t8mIcXZwvnAavnbfc5t9g', color: 'hover:bg-pink-600', border: 'hover:border-pink-500' },
     { icon: Twitter, label: 'Twitter / X', href: '#', color: 'hover:bg-slate-600', border: 'hover:border-slate-400' },
 ]
 
@@ -140,6 +140,7 @@ const Footer = () => {
 
                                     <a key={label}
                                         href={href}
+                                        target='_blank'
                                         className={`w-9 h-9 rounded-xl bg-white/8 border border-white/10 ${border} ${color} flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200 hover:-translate-y-0.5`}
                                     >
                                         <Icon size={16} />

@@ -2,6 +2,7 @@ const Test = require("../models/testData");
 const { testValidator } = require("../utils/validate");
 const Attempt = require("../models/testSubmit")
 
+// this api is used to create the test 
 const createTest = async (req, res) => {
     try {
         const data = req.body;
@@ -15,6 +16,7 @@ const createTest = async (req, res) => {
     }
 }
 
+// to delete the test data using the admin panel
 const deleteTest = async (req, res) => {
     try {
         const { id } = req.params;
@@ -26,6 +28,7 @@ const deleteTest = async (req, res) => {
     }
 }
 
+// Fetch the all test data using this api in the admin panel 
 const getAllTest = async (req, res) => {
     try {
         const testData = await Test.find();
@@ -47,7 +50,7 @@ const getAllTest = async (req, res) => {
     }
 }
 
-
+// get test data using the test id and some other filter 
 const getById = async (req, res) => {
     try {
         const { id } = req.params;
@@ -80,6 +83,7 @@ const getById = async (req, res) => {
     }
 }
 
+// fetch the mock test using the class name/std
 const mockByClass = async (req, res) => {
     try {
         const { id } = req.params;
@@ -110,12 +114,13 @@ const mockByClass = async (req, res) => {
     }
 }
 
+// this api is used to create the 
 const submitTest = async (req, res) => {
     try {
         const userId = req.result._id;
         const testId = req.params.id;
         const { answers } = req.body;
-       
+
 
 
         if (!answers || !Array.isArray(answers)) {
@@ -232,7 +237,7 @@ const submitTest = async (req, res) => {
     }
 };
 
-
+// to get the result of the all student in admin panel 
 const getSudentAllResult = async (req, res) => {
     try {
         const userId = req.result._id;
@@ -264,6 +269,7 @@ const getSudentAllResult = async (req, res) => {
     }
 }
 
+// applied filter to get test wise test result 
 const testWiseResult = async (req, res) => {
     try {
         const { id } = req.params;
@@ -290,7 +296,7 @@ const testWiseResult = async (req, res) => {
     }
 }
 
-
+// get result using the student id and student for the student purpose only
 const getStudentResult = async (req, res) => {
     try {
         const userId = req.result._id;
