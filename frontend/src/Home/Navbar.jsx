@@ -59,6 +59,8 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  const logoUrl = "https://res.cloudinary.com/dkt7ksipv/image/upload/v1784119626/logo_mjbjl3.png";
+
   return (
     <>
       <style>{`
@@ -183,7 +185,7 @@ const Navbar = () => {
             </div> */}
 
             <div className='size-12 object-cover'>
-              <img src="../public/logo.png" alt="" />
+              <img src={logoUrl} alt="" />
             </div>
 
             <div className="flex flex-col leading-none">
