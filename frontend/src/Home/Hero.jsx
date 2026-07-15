@@ -135,7 +135,7 @@ export default function Hero() {
                 Start Free Trial
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button onClick={()=>navigate('/result')} className="flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-sm hover:bg-white/5">
+              <button onClick={()=>navigate('/result')} className="hidden  md:flex items-center gap-2 px-6 py-3 border border-white/20 hover:border-white/40 text-white font-semibold rounded-xl transition-all duration-300 backdrop-blur-sm hover:bg-white/5">
                 View Results
                 <ChevronRight size={16} />
               </button>

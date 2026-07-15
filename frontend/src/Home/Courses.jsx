@@ -245,7 +245,6 @@ const CourseModal = ({ course, onClose }) => {
 };
 
 export default function Courses() {
-  const [search, setSearch] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [wishlist, setWishlist] = useState([]);
   const [modalCourse, setModalCourse] = useState(null);
@@ -293,26 +292,6 @@ export default function Courses() {
           Unlock your potential with expert-led programs for every student.
         </p>
 
-        <div className="relative max-w-md mx-auto">
-          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-
-          <input
-            type="text"
-            placeholder="Search courses..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="input w-full pl-10 pr-10 rounded-full bg-gray-900 text-white border-gray-700 focus:border-blue-500 focus:outline-none"
-          />
-
-          {search && (
-            <button
-              onClick={() => setSearch("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
-            >
-              <X size={15} />
-            </button>
-          )}
-        </div>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 px-4 py-6 bg-gray-900 border-b border-gray-800">
