@@ -106,9 +106,8 @@ const CourseCard = ({ course, isWishlisted, onWishlist, onView }) => {
   const Icon = course.icon;
 
   return (
-    <div className="carousel-item w-[85%] sm:w-[48%] lg:w-[32%] xl:w-[24%]">
-      <div className="w-full bg-gray-900 border border-gray-800 rounded-3xl shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-
+    <div className="carousel-item w-[85%] sm:w-[48%] lg:w-[32%] xl:w-[24%] flex-shrink-0">
+      <div className="w-full bg-gray-990 bg-gray-900 border border-gray-800 rounded-3xl shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
         <div className="relative h-44 bg-gradient-to-br from-gray-950 via-gray-900 to-blue-950 flex items-center justify-center">
           <div className="absolute inset-0 bg-blue-600/10" />
 
@@ -118,8 +117,9 @@ const CourseCard = ({ course, isWishlisted, onWishlist, onView }) => {
 
           <button
             onClick={() => onWishlist(course.id)}
-            className={`absolute top-4 right-4 p-2 rounded-full transition
-              ${isWishlisted ? "bg-blue-600 text-white" : "bg-white/10 text-gray-300 hover:bg-blue-600 hover:text-white"}`}
+            className={`absolute top-4 right-4 p-2 rounded-full transition ${
+              isWishlisted ? "bg-blue-600 text-white" : "bg-white/10 text-gray-300 hover:bg-blue-600 hover:text-white"
+            }`}
           >
             <Star size={16} fill={isWishlisted ? "white" : "none"} />
           </button>
@@ -134,26 +134,17 @@ const CourseCard = ({ course, isWishlisted, onWishlist, onView }) => {
             <span className={`text-xs font-bold px-3 py-1 rounded-full ${course.tagStyle}`}>
               {course.tag}
             </span>
-
-            <span className="text-yellow-400 text-sm font-bold">
-              ⭐ {course.rating}
-            </span>
+            <span className="text-yellow-400 text-sm font-bold">⭐ {course.rating}</span>
           </div>
 
-          <h2 className="text-xl font-black text-white">
-            {course.courseName}
-          </h2>
-
-          <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
-            {course.description}
-          </p>
+          <h2 className="text-xl font-black text-white">{course.courseName}</h2>
+          <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">{course.description}</p>
 
           <div className="flex items-center justify-between text-xs text-gray-400">
             <span className="flex items-center gap-1">
               <Users size={14} className="text-blue-400" />
               {course.students}
             </span>
-
             <span className="flex items-center gap-1">
               <Clock size={14} className="text-blue-400" />
               {course.duration}
@@ -162,7 +153,7 @@ const CourseCard = ({ course, isWishlisted, onWishlist, onView }) => {
 
           <button
             onClick={() => onView(course)}
-            className="btn border-none bg-blue-600 hover:bg-blue-700 text-white rounded-xl w-full"
+            className="btn border-none bg-blue-600 hover:bg-blue-700 text-white rounded-xl w-full flex items-center justify-center gap-2"
           >
             View Details
             <ChevronRight size={16} />
@@ -210,9 +201,7 @@ const CourseModal = ({ course, onClose }) => {
 
           <div>
             <h2 className="text-2xl font-black text-white">{course.courseName}</h2>
-            <p className="text-gray-400 text-sm mt-2 leading-relaxed">
-              {course.description}
-            </p>
+            <p className="text-gray-400 text-sm mt-2 leading-relaxed">{course.description}</p>
           </div>
 
           <div className="grid grid-cols-3 gap-3 text-center">
@@ -235,7 +224,7 @@ const CourseModal = ({ course, onClose }) => {
             </div>
           </div>
 
-          <button className="btn bg-blue-600 hover:bg-blue-700 border-none text-white rounded-xl">
+          <button className="btn bg-blue-600 hover:bg-blue-700 border-none text-white rounded-xl py-3 w-full">
             Enroll Now
           </button>
         </div>
@@ -246,6 +235,7 @@ const CourseModal = ({ course, onClose }) => {
 
 export default function Courses() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
   const [wishlist, setWishlist] = useState([]);
   const [modalCourse, setModalCourse] = useState(null);
 
@@ -259,7 +249,6 @@ export default function Courses() {
 
   const scrollCarousel = (direction) => {
     if (!carouselRef.current) return;
-
     carouselRef.current.scrollBy({
       left: direction === "left" ? -350 : 350,
       behavior: "smooth",
@@ -267,18 +256,16 @@ export default function Courses() {
   };
 
   const filtered = courses.filter((c) => {
-    const matchSearch =
-      c.courseName.toLowerCase().includes(search.toLowerCase()) ||
-      c.description.toLowerCase().includes(search.toLowerCase());
-
     const matchFilter = activeFilter === "All" || c.tag === activeFilter;
+    const matchSearch =
+      c.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.description.toLowerCase().includes(searchTerm.toLowerCase());
 
     return matchSearch && matchFilter;
   });
 
   return (
     <div className="min-h-screen bg-gray-950">
-
       <div className="bg-gray-950 border-b border-gray-800 py-14 px-4 text-center">
         <span className="inline-block px-4 py-1 rounded-full bg-blue-600/20 text-blue-400 text-xs font-semibold mb-4">
           Bihar&apos;s Most Trusted Coaching
@@ -292,6 +279,17 @@ export default function Courses() {
           Unlock your potential with expert-led programs for every student.
         </p>
 
+        {/* Added Search Input Field */}
+        <div className="relative max-w-md mx-auto">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+          <input
+            type="text"
+            placeholder="Search courses..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-11 pr-4 py-3 bg-gray-900 border border-gray-800 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition"
+          />
+        </div>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 px-4 py-6 bg-gray-900 border-b border-gray-800">
@@ -299,10 +297,11 @@ export default function Courses() {
           <button
             key={f}
             onClick={() => setActiveFilter(f)}
-            className={`px-4 py-2 rounded-full text-sm font-semibold border transition
-              ${activeFilter === f
+            className={`px-4 py-2 rounded-full text-sm font-semibold border transition ${
+              activeFilter === f
                 ? "bg-blue-600 text-white border-blue-600"
-                : "bg-transparent text-gray-400 border-gray-700 hover:border-blue-500 hover:text-blue-400"}`}
+                : "bg-transparent text-gray-400 border-gray-700 hover:border-blue-500 hover:text-blue-400"
+            }`}
           >
             {f}
           </button>
@@ -314,8 +313,6 @@ export default function Courses() {
           <p className="text-sm text-gray-400">
             Showing <span className="font-bold text-blue-400">{filtered.length}</span> courses
           </p>
-
-
         </div>
 
         {filtered.length === 0 ? (
@@ -327,7 +324,7 @@ export default function Courses() {
         ) : (
           <div
             ref={carouselRef}
-            className="carousel carousel-center w-full gap-5 overflow-x-auto scroll-smooth pb-6"
+            className="carousel carousel-center w-full gap-5 overflow-x-auto scroll-smooth pb-6 flex"
           >
             {filtered.map((course) => (
               <CourseCard
@@ -342,17 +339,17 @@ export default function Courses() {
         )}
 
         <div className="flex items-center justify-center mt-4">
-          <div className=" flex gap-8 md:gap-16">
+          <div className="flex gap-8 md:gap-16">
             <button
               onClick={() => scrollCarousel("left")}
-              className="btn btn-circle bg-gray-900 border-gray-700 text-white hover:bg-blue-600"
+              className="btn btn-circle bg-gray-900 border border-gray-700 text-white hover:bg-blue-600 flex items-center justify-center w-12 h-12 rounded-full"
             >
               <ChevronLeft size={20} />
             </button>
 
             <button
               onClick={() => scrollCarousel("right")}
-              className="btn btn-circle bg-gray-900 border-gray-700 text-white hover:bg-blue-600"
+              className="btn btn-circle bg-gray-900 border border-gray-700 text-white hover:bg-blue-600 flex items-center justify-center w-12 h-12 rounded-full"
             >
               <ChevronRight size={20} />
             </button>
@@ -360,12 +357,7 @@ export default function Courses() {
         </div>
       </section>
 
-      {modalCourse && (
-        <CourseModal
-          course={modalCourse}
-          onClose={() => setModalCourse(null)}
-        />
-      )}
+      {modalCourse && <CourseModal course={modalCourse} onClose={() => setModalCourse(null)} />}
     </div>
   );
 }
