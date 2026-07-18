@@ -185,7 +185,7 @@ const Navbar = () => {
             </div> */}
 
             <div className='size-12 object-cover'>
-              <img src={logoUrl} alt="" />
+              <img src={logoUrl} alt="some eroor" />
             </div>
 
             <div className="flex flex-col leading-none">

@@ -15,14 +15,14 @@ const Member = () => {
             }
         },
         {
-            name: "Prince Kumar",
+            name: "Prince Kumar Raj",
             designation: "Managing Director",
             experience: "8+ Years Experience",
             email: "rakeshphysicsreply@gmail.com",
             imgURL: "https://res.cloudinary.com/dkt7ksipv/image/upload/v1784041387/Prince_aaglaf.png",
             socials: { 
                 instagram: "https://www.instagram.com/pkr_princekumarraj/", 
-                facebook: "https://www.facebook.com/rakeshkumarjha86" 
+                facebook: "https://www.facebook.com/pkr.princekumarraj" 
             }
         }
     ];
