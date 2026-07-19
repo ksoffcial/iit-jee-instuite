@@ -4,32 +4,26 @@ import { Camera, ImageIcon } from "lucide-react";
 const galleryImages = [
   {
     id: 1,
-    title: "Annual Function",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800",
   },
   {
     id: 2,
-    title: "Computer Lab",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
   },
   {
     id: 3,
-    title: "Classroom",
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800",
   },
   {
     id: 4,
-    title: "Seminar",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
   },
   {
     id: 5,
-    title: "Library",
     image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800",
   },
   {
     id: 6,
-    title: "Award Ceremony",
     image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800",
   },
 ];
@@ -69,12 +63,6 @@ const OurGallery = () => {
                   />
                 </figure>
 
-                <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-4">
-                  <div className="flex items-center gap-2 text-white">
-                    <ImageIcon size={18} className="text-blue-500" />
-                    <h3 className="font-semibold">{item.title}</h3>
-                  </div>
-                </div>
               </div>
             </div>
           ))}
@@ -95,18 +83,7 @@ const OurGallery = () => {
 
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80"></div>
 
-              <div className="absolute bottom-0 p-5">
-                <div className="flex items-center gap-2">
-                  <ImageIcon
-                    className="text-blue-500 group-hover:rotate-12 duration-300"
-                    size={22}
-                  />
-                  <h3 className="text-white text-xl font-semibold">
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-
+             
               <div className="absolute inset-0 border-2 border-blue-500 scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500 rounded-2xl"></div>
             </div>
           ))}
@@ -116,4 +93,4 @@ const OurGallery = () => {
   );
 };
 
-export default OurGallery;
+export default OurGallery; 

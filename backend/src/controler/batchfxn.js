@@ -1,4 +1,5 @@
 const Batch = require("../models/batchData");
+const Enrollement = require("../models/enrolledStudent");
 const { batchValidator } = require("../utils/validate");
 
 
@@ -27,6 +28,8 @@ const getAllBatch = async (req, res) => {
 const deleteBatch = async (req, res) => {
     try {
         const { batchId } = req.params;
+
+    await Enrollement.deleteMany({courseId:batchId});
 
         if (!batchId) {
             return res.status(500).send("batch id is not defiend ")

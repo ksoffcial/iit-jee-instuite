@@ -4,7 +4,7 @@ import { Mail, Briefcase, Instagram, Facebook } from 'lucide-react';
 const Member = () => {
     const data = [
         {
-            name: "Rakesh Sir",
+            name: "Rakesh Kumar Jha ",
             designation: "Director & Physics Teacher",
             experience: "25+ Years Experience",
             email: "rakeshphysicsreply@gmail.com",

@@ -24,10 +24,10 @@ const stats = [
 ];
 
 const floatingBadges = [
-  { icon: Atom, text: "Physics", color: "bg-blue-500/20 border-blue-400/40 text-blue-300", pos: "top-16 left-4 md:top-24 md:left-10" },
-  { icon: FlaskConical, text: "Chemistry", color: "bg-green-500/20 border-green-400/40 text-green-300", pos: "top-8 right-4 md:top-16 md:right-10" },
-  { icon: Calculator, text: "Mathematics", color: "bg-yellow-500/20 border-yellow-400/40 text-yellow-300", pos: "bottom-32 left-4 md:bottom-40 md:left-6" },
-  { icon: Brain, text: "Biology", color: "bg-pink-500/20 border-pink-400/40 text-pink-300", pos: "bottom-16 right-4 md:bottom-24 md:right-8" },
+  { icon: Atom, text: "JEE", color: "bg-blue-500/20 border-blue-400/40 text-blue-300", pos: "top-16 left-4 md:top-24 md:left-10" },
+  { icon: FlaskConical, text: "NEET", color: "bg-green-500/20 border-green-400/40 text-green-300", pos: "top-8 right-4 md:top-16 md:right-10" },
+  { icon: Calculator, text: "BOARDS", color: "bg-yellow-500/20 border-yellow-400/40 text-yellow-300", pos: "bottom-32 left-4 md:bottom-40 md:left-6" },
+  { icon: Brain, text: "INTEGRATED", color: "bg-pink-500/20 border-pink-400/40 text-pink-300", pos: "bottom-16 right-4 md:bottom-24 md:right-8" },
 ];
 
 const shayaris = [

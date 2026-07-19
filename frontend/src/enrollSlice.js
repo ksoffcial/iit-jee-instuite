@@ -39,7 +39,7 @@ const enrollSlice = createSlice({
                 state.loading = false;
                 state.enrolledCourses = action.payload;
                 state.enrolledCourseIds = action.payload.map(
-                    (item) => item?.courseId._id
+                    (item) => item?.courseId?._id
                 );
                 state.isPaidUser = action.payload?.length > 0;
                 state.user = action.payload;
