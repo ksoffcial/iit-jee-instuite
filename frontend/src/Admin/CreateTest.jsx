@@ -188,12 +188,12 @@ const CreateTest = () => {
                  
                   <select
                     className="select select-bordered"
-                    {...register("ClassName")}
+                    {...register("ClassName")}  
                   >
                     <option value="11">11 th</option>
                     <option value="12">12 th</option>
-                    <option value="13">jee</option>
-                    <option value="14">neet</option>
+                    <option value="13">Jee</option>
+                    <option value="14">Neet</option>
                   </select>
                   {errors.ClassName && (
                     <span className="text-error text-xs mt-1">

@@ -8,7 +8,7 @@ const createBatch = async (req, res) => {
         const data = req.body;
         batchValidator(data)
         const dataAdded = await Batch.create(data);
-        res.send("batch created sucessfullly ")
+        res.send("batch created sucessfullly ");
     }
     catch (err) {
         res.send("Error Batch creation " + err.message);
@@ -18,10 +18,13 @@ const createBatch = async (req, res) => {
 const getAllBatch = async (req, res) => {
     try {
         const batchData = await Batch.find().select("_id BatchName className timePeriods startDate time subjects createAt description");
+        if (!batchData) {
+            return res.status(400).send("Batch data is not avaible");
+        }
         res.status(200).send(batchData);
     }
     catch (err) {
-        res.status(404).send("Error in get all batch " + err.message)
+        res.status(404).send("Error in get all batch " + err.message);
     }
 }
 
@@ -29,22 +32,22 @@ const deleteBatch = async (req, res) => {
     try {
         const { batchId } = req.params;
 
-    await Enrollement.deleteMany({courseId:batchId});
 
         if (!batchId) {
-            return res.status(500).send("batch id is not defiend ")
+            return res.status(500).send("batch id is not defiend ");
         }
 
+        await Enrollement.deleteMany({ courseId: batchId });
         const batchData = await Batch.findByIdAndDelete(batchId);
 
         if (!batchData) {
             return res.status(500).send("batch Data is not avaible ");
         }
 
-        res.status(200).send("deleted sucessfully")
+        res.status(200).send("deleted sucessfully");
     }
     catch (err) {
-        res.status(500).send("error in delete batch " + err.message)
+        res.status(500).send("error in delete batch " + err.message);
     }
 
 }

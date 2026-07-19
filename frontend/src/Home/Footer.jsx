@@ -4,14 +4,15 @@ import {
     Twitter, Send, BookOpen, GraduationCap, FlaskConical,
     ChevronRight, Heart, Award, Atom, Zap
 } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 const quickLinks = [
-    { label: 'About Us', href: '#' },
-    { label: 'Our Faculty', href: '#' },
-    { label: 'Courses & Batches', href: '#' },
-    { label: 'Student Results', href: '#' },
+    { label: 'About Us' ,path:'/about'},
+    { label: 'Our Faculty', path:'/faculty' },
+    { label: 'Courses & Batches', path:'/course'},
+    { label: 'Student Results', path:'/result'},
     { label: 'Study Material', href: '#' },
-    { label: 'Admission Process', href: '#' },
+    { label: 'Admission Process', path:'/query' },
 ]
 
 const courses = [
@@ -62,6 +63,7 @@ const socials = [
 ]
 
 const Footer = () => {
+    const navigate = useNavigate();
     return (
         <div>
             <footer className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 overflow-hidden">
@@ -157,10 +159,10 @@ const Footer = () => {
                                 Quick Links
                             </h4>
                             <ul className="space-y-2.5">
-                                {quickLinks.map(({ label, href }) => (
+                                {quickLinks.map(({ label, href,path}) => (
                                     <li key={label}>
-                                        <a
-                                            href={href}
+                                        <button
+                                            onClick={()=>navigate(`/${path}`)}
                                             className="group flex items-center gap-2 text-slate-400 hover:text-white text-sm transition-colors duration-200"
                                         >
                                             <ChevronRight
@@ -168,7 +170,7 @@ const Footer = () => {
                                                 className="text-blue-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0"
                                             />
                                             {label}
-                                        </a>
+                                        </button>
                                     </li>
                                 ))}
                             </ul>
