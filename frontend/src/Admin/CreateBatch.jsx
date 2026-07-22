@@ -88,8 +88,8 @@ const CreateBatch = () => {
                                     {...register("className")}
                                 >
                                     <option value="">Select Category</option>
-                                    <option value="11th">11th Standard</option>
-                                    <option value="12th">12th Standard</option>
+                                    <option value="11">11th Standard</option>
+                                    <option value="12">12th Standard</option>
                                     <option value="dropper">Dropper</option>
                                     <option value="jee">IIT-JEE</option>
                                     <option value="neet">NEET</option>

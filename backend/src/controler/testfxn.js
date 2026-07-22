@@ -1,6 +1,7 @@
 const Test = require("../models/testData");
 const { testValidator } = require("../utils/validate");
-const Attempt = require("../models/testSubmit")
+const Attempt = require("../models/testSubmit");
+const { FAILOVER_MODES } = require("redis");
 
 // this api is used to create the test 
 const createTest = async (req, res) => {
@@ -94,7 +95,7 @@ const mockByClass = async (req, res) => {
         }
 
 
-        const testData = await Test.find({ ClassName: id }).select(" _id TestName description durationMinutes");
+        const testData = await Test.find({ ClassName: id, isPaid:false }).select(" _id TestName description durationMinutes");
 
         if (!testData) {
             return res.status(200).json({
@@ -410,8 +411,41 @@ const getStudentAllResult = async (req, res) => {
 }
 
 
+// this api is used to get the my exam using the class and applied to the exam 
+
+const getExamClass = async (req, res) => {
+    try {
+        const classN = req.params.id;
+        classN.trim();
+        if (!classN) {
+            return res.status(404).send("Classname is not definded");
+        }
+
+        console.log("hello 2")
+
+
+        const testData = await Test.find({ ClassName: classN, isPaid: true });
+        console.log("hello 3")
+
+        if(!testData){
+            return res.status(404).send("some error to fetch the data ");
+        }
+
+        res.status(200).json({
+            data: testData,
+            message: "Data found"
+        })
+    }
+    catch (err) {
+        console.log("eroor", err.message)
+        res.status(404).json({
+            message: "DAta not found" + err.message
+        })
+    }
+}
 
 
 
 
-module.exports = { createTest, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult, getStudentAllResult, mockByClass };
+
+module.exports = { createTest, getExamClass, deleteTest, getAllTest, getById, submitTest, getStudentResult, getSudentAllResult, testWiseResult, getStudentAllResult, mockByClass };

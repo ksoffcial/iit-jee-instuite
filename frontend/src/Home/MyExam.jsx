@@ -128,7 +128,7 @@ const MyExam = () => {
                     <button
                       className="btn btn-primary w-full"
                       onClick={() =>
-                        navigate(`/exam/subject/${data._id}`)
+                        navigate(`/exam/subject/${data.courseId?.className}`)
                       }
                     >
                       Start Exam

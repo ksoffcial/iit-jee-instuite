@@ -137,7 +137,7 @@ const studentEnrollById = async (req, res) => {
         if (!id) {
             return res.status(400).send("Id is not valid")
         }
-        const resultData = await Enrollement.findById(id).select("courseId").populate({ path: 'courseId', select: 'BatchName subjects' });
+        const resultData = await Enrollement.findById(id).select("courseId").populate({ path: 'courseId', select: 'BatchName className subjects' });
         if (!resultData) {
             return res.status(400).send("Data not found in the enrollment section ")
         }

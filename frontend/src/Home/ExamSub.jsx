@@ -9,7 +9,7 @@ const ExamSub = () => {
   const [testData, setTestData] = useState([]);
 
   const getData = async () => {
-    const response = await axiosClient.get(`/enroll/studentEnrollById/${id}`);
+    const response = await axiosClient.get(`/test/getExam/${id}`);
     console.log(response.data.data);
     setTestData(response.data.data);
   }

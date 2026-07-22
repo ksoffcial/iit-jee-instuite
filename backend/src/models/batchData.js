@@ -12,7 +12,7 @@ const batchSchema = new Schema({
     },
     className: {
         type: String,
-        enum: ["12th", "11th", "dropper", "jee", "neet"]
+        enum: ["12", "11", "13", "14", "15"]
     },
     startDate: {
         type: Date,
