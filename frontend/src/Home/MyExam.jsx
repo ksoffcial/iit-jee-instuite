@@ -131,7 +131,7 @@ const MyExam = () => {
                         navigate(`/exam/subject/${data.courseId?.className}`)
                       }
                     >
-                      Start Exam
+                      Get Test
                       <ArrowRight size={18} />
                     </button>
                   </div>

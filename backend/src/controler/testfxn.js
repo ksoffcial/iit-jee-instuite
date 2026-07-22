@@ -415,19 +415,14 @@ const getStudentAllResult = async (req, res) => {
 
 const getExamClass = async (req, res) => {
     try {
-        const classN = req.params.id;
-        classN.trim();
+        const classN = req.params.id?.trim();
         if (!classN) {
             return res.status(404).send("Classname is not definded");
         }
 
-        console.log("hello 2")
+        const testData = await Test.find({ ClassName: classN, isPaid: true }).select("ClassName TestName durationMinutes endTime  resultPublishTime startTime");
 
-
-        const testData = await Test.find({ ClassName: classN, isPaid: true });
-        console.log("hello 3")
-
-        if(!testData){
+        if(testData.length === 0){
             return res.status(404).send("some error to fetch the data ");
         }
 

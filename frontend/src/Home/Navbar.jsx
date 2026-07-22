@@ -221,11 +221,11 @@ const Navbar = () => {
 
             {/* Contact pill — desktop */}
             <a
-              href="tel:+919876543210"
+              href="tel:+916203981174"
               className="hidden xl:flex items-center gap-2 text-xs font-bold text-gray-600 hover:text-blue-600 bg-gray-100 hover:bg-blue-50 px-3 py-2 rounded-xl transition-all"
             >
               <Phone size={13} strokeWidth={2.5} />
-              +91-98765-43210
+              +91-62039 81174
             </a>
 
             {isAuthenticated ? (
