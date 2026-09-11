@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { zodResolver } from "@hookform/resolvers/zod";
+import {z} from "zod";
 import {
   Phone,
   Lock,
