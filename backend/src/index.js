@@ -19,8 +19,7 @@ app.use(cors(
     {
         origin: ['http://localhost:5173',
             'https://iit-jee-instuite.vercel.app',
-            'https://rakeshphysics.com'],
-
+            'http://kdclasses.vercel.app/'],
         credentials: true
     }
 ))
