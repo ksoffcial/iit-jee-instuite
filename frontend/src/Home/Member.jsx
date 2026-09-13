@@ -4,17 +4,6 @@ import { Mail, Briefcase, Instagram, Facebook } from 'lucide-react';
 const Member = () => {
     const data = [
         {
-            name: "Rakesh Kumar Jha ",
-            designation: "Director & Physics Teacher",
-            experience: "25+ Years Experience",
-            email: "rakeshphysicsreply@gmail.com",
-            imgURL: "https://res.cloudinary.com/dkt7ksipv/image/upload/v1784041388/IMG_20260120_130106_qv00ea.png",
-            socials: { 
-                instagram: "https://www.instagram.com/rakeshpysics/", 
-                facebook: "https://www.facebook.com/rakeshkumarjha86" 
-            }
-        },
-        {
             name: "Prince Kumar Raj",
             designation: "Managing Director",
             experience: "8+ Years Experience",
