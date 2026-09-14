@@ -39,7 +39,7 @@ const shayaris = [
 export default function Hero() {
   const [shayariIndex, setShayariIndex] = useState(0);
   const [visible, setVisible] = useState(true);
-  const imageUrl = "https://res.cloudinary.com/dkt7ksipv/image/upload/v1784041388/IMG_20260120_130106_qv00ea.png";
+  const imageUrl = "https://plus.unsplash.com/premium_photo-1683120972279-87efe2ba252f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTczfHxzY2llbmNlfGVufDB8fDB8fHww";
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -164,7 +164,7 @@ export default function Hero() {
               {/* <span className="text-white font-bold text-lg">Rakesh Physics</span>
               <span className="text-blue-200 text-xs">Est. 2006</span> */}
 
-              <img src={imageUrl} alt="" className="rounded-full object-top object-cover  w-full h-full"/>
+              <img src={imageUrl} alt="" className="rounded-full object-cover  w-full h-full"/>
             </div>
 
             {/* Orbit Rings */}
@@ -209,7 +209,7 @@ export default function Hero() {
           <span className="text-blue-400 text-xs font-bold uppercase tracking-widest whitespace-nowrap">🎯 Live Now</span>
           <div className="overflow-hidden flex-1">
             <div className="text-sm text-gray-300 whitespace-nowrap">
-              Admissions Open for  2026 Batch  · Free Demo Class for 11th & 12th boards   · New NEET Batch   · Download Free Study Material →
+              Admissions Open for  2027 Batch  · Free Demo Class for 11th & 12th boards   · New BSEB Batch   · Download Free Study Material →
             </div>
           </div>
         </div>

@@ -42,7 +42,7 @@ const contactInfo = [
     {
         icon: Mail,
         label: 'Email Us',
-        value: 'rakeshphysicsreply@gmail.com\nrakeshphysicsreply@gmail.com',
+        value: 'gyanvritticlasses@gmail.com\ngyanvritticlasses@gmail.com',
         color: 'text-blue-400',
         bg: 'bg-blue-400/10',
     },
@@ -113,11 +113,11 @@ const Footer = () => {
                             <div className="flex items-center gap-3 mb-5">
                                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/30 flex-shrink-0">
                                     {/* <Atom size={24} className="text-white" /> */}
-                                    <img src="/logo.png" alt="" />
+                                    <img src="https://res.cloudinary.com/dkt7ksipv/image/upload/v1789388488/logo_i_rstqim.png" alt="" className='rounded-full h-full w-full object-contain bg-white'/>
 
                                 </div>
                                 <div>
-                                    <p className="text-white font-black text-lg leading-tight tracking-tight upp">Rakesh Physics</p>
+                                    <p className="text-white font-black text-lg leading-tight tracking-tight upp">Gyanvritti Classes</p>
                                     <p className="text-blue-400 text-xs font-semibold tracking-widest uppercase">Institute</p>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ const Footer = () => {
 
                             {/* Trust badges */}
                             <div className="flex flex-wrap gap-2 mb-6">
-                                {['#1 in Purnea', 'Est. 2002', '200K+ Selections'].map((b, i) => (
+                                {['#1 in Bihar', 'Est. 2025', '2k+ Selections'].map((b, i) => (
                                     <span key={i} className="text-xs font-semibold bg-blue-500/15 border border-blue-400/25 text-blue-300 px-3 py-1 rounded-full">
                                         {b}
                                     </span>

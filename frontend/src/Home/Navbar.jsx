@@ -59,7 +59,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const logoUrl = "https://res.cloudinary.com/dkt7ksipv/image/upload/v1784119626/logo_mjbjl3.png";
+  const logoUrl = "https://res.cloudinary.com/dkt7ksipv/image/upload/v1789388488/logo_i_rstqim.png";
 
   return (
     <>
@@ -184,13 +184,13 @@ const Navbar = () => {
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-white" />
             </div> */}
 
-            <div className='size-12 object-cover'>
-              <img src={logoUrl} alt="some eroor" />
+            <div className='size-10 object-cover'>
+              <img src={logoUrl} alt="some eroor" className='h-full w-full object-cover ' />
             </div>
 
             <div className="flex flex-col leading-none">
               <span className="text-[17px] sm:text-lg font-black tracking-tight text-gray-900 uppercase">
-                Rakesh <span className="shimmer-text">Physics</span>
+                Gyanvritti  <span className="shimmer-text">Classes</span>
               </span>
               <span className="hidden sm:block text-[9px] font-bold text-gray-400 tracking-[0.2em] uppercase mt-0.5">
                 Institute of Excellence
